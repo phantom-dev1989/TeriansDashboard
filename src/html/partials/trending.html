@@ -1,0 +1,61 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Trending
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div ng-controller="trendingGridsterCtrl">
+            <div gridster="gridsterOpts">
+                <ul>
+
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsLineChartWithLabelsCtrl">
+                                <terians-high-charts-line-chart-with-labels title="title" subTitle="subTitle"
+                                                                            data="data"
+                                                                            xAxis="xAxis" yAxis="yAxis"
+                                                                            htooltip="tooltip"></terians-high-charts-line-chart-with-labels>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Transaction Panel" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsHeatmapCtrl">
+                                <terians-high-charts-heatmap title="title" data="data"
+                                                             chartName="chartName" xAxis="xAxis" yAxis="yAxis"
+                                                             htooltip="tooltip"></terians-high-charts-heatmap>
+                            </div>
+                        </terians-panel>
+                    </div>
+
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsBarStackedCtrl">
+                                <terians-high-charts-bar-stacked title="title" data="data" xAxis="xAxis"
+                                                                 yAxis="yAxis"></terians-high-charts-bar-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsGaugeCtrl">
+                                <terians-high-charts-gauge-chart title="title" options="options" data="data"
+                                                                 chartName="chartName"
+                                                                 htooltip="tooltip"></terians-high-charts-gauge-chart>
+                            </div>
+                        </terians-panel>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

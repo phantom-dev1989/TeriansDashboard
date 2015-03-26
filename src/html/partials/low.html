@@ -1,0 +1,43 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Low
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div ng-controller="issuesGridsterCtrl">
+            <div gridster="gridsterOpts">
+                <ul>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsBasicAreaPercentageCtrl">
+                                <terians-high-charts-basic-area-percentage data="data" title="title"
+                                                                           subTitle="subTitle" xAxis="xAxis"
+                                                                           yAxis="yAxis"
+                                                                           htooltip="tooltip"></terians-high-charts-basic-area-percentage>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsBasicAreaStackedCtrl">
+                                <terians-high-charts-basic-area-stacked data="data" title="title"
+                                                                        subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                        htooltip="tooltip"></terians-high-charts-basic-area-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

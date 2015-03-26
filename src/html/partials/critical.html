@@ -1,0 +1,69 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Critical Issues
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="33320" text-small="Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="1234054" text-small="Lines of Code"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="500" text-small="Class"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="5607" text-small="Methods"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="54.89" text-small="Complexity"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="476 Days" text-small="Technical Debt"/>
+            </div>
+        </div>
+        <div ng-controller="issuesGridsterCtrl">
+            <div gridster="gridsterOpts">
+                <ul>
+                    <div gridster-item>
+                        <terians-panel title="Bar Chart" icon="fa fa-bar-chart-o fa-fw">
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Line Area" icon="fa fa-bar-chart-o fa-fw">
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Doughnut Chart" icon="fa fa-money fa-fw">
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Radar Chart" icon="fa fa-long-arrow-right fa-fw">
+                        </terians-panel>
+                    </div>
+
+                    <div gridster-item>
+                        <terians-panel title="Polar Area Chart" icon="fa fa-clock-o fa-fw">
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Pie Area" icon="fa fa-bar-chart-o fa-fw">
+                        </terians-panel>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

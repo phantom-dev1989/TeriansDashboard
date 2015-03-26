@@ -1,0 +1,89 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" >TERIANS DASHBOARD</a>
+    </div>
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-right top-nav">
+        <li class="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+            <ul class="dropdown-menu alert-dropdown">
+                <li>
+                    <a href="#">Web Goats 5.4</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">View All Projects</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown" ng-controller="helloWorldCtrl" ng-cloak>
+            <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{message}} <b
+                    class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-default navbar-nav side-nav">
+            <!--  <li>
+                  <a ui-sref="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+              </li> -->
+            <li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
+                        class="fa fa-fw fa-arrows-v"></i>
+                    Issues <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse">
+                    <li>
+                        <a ui-sref="dashboard.issues">All</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.critical">Critical</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.high">High</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.medium">Medium</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.low">Low</a>
+                    </li>
+                    <li>
+                        <a ui-sref="dashboard.bestPractices">Best Practices</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a ui-sref="dashboard.issuesDrillDown"><i class="fa fa-fw fa-desktop"></i> Issues Drilldown</a>
+            </li>
+            <li>
+                <a ui-sref="dashboard.techInvestment"><i class="fa fa-fw fa-desktop"></i> Technical Investment</a>
+            </li>
+            <li>
+                <a ui-sref="dashboard.dependencies"><i class="fa fa-fw fa-desktop"></i> Dependencies</a>
+            </li>
+            <li>
+                <a ui-sref="dashboard.architecture"><i class="fa fa-fw fa-desktop"></i> Architecture</a>
+            </li>
+            <li>
+                <a ui-sref="dashboard.trending"><i class="fa fa-fw fa-desktop"></i> Trending</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>

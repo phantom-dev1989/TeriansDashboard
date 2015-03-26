@@ -1,0 +1,63 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Best Practices
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="33320" text-small="Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="1234054" text-small="Lines of Code"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="500" text-small="Class"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="5607" text-small="Methods"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="54.89" text-small="Complexity"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="476 Days" text-small="Technical Debt"/>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div ng-controller="issuesGridsterCtrl">
+            <div gridster="gridsterOpts">
+                <ul>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsBasicColumnCtrl">
+                                <terians-high-charts-basic-column data="data" title="title"
+                                                                  subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                  htooltip="tooltip"></terians-high-charts-basic-column>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsBasicAreaCtrl">
+                                <terians-high-charts-basic-area data="data" title="title"
+                                                                subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                htooltip="tooltip"></terians-high-charts-basic-area>
+                            </div>
+                        </terians-panel>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
