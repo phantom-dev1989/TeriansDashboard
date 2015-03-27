@@ -14,6 +14,8 @@ module.exports = function() {
         client: client,
         css: 'src/resources/css/*.css',
         index: 'index.html',
+        defaultPort: 63342,
+        specRunner: 'SpecRunner.html',
         js: [
             'src/js/**/*.js'
         ],

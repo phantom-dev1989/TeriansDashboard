@@ -9,7 +9,24 @@
 // Restangular Configuration
     app.config(function (RestangularProvider) {
         // Note that we run everything on the localhost
-        //RestangularProvider.setBaseUrl('http://127.0.0.1:8080/terians/api/v1');
+        RestangularProvider.setBaseUrl('http://localhost/terians/api/v1');
+    });
+
+// Extra data from Collections Nested in JSON
+    app.config(function(RestangularProvider) {
+
+        // add a response intereceptor
+        RestangularProvider.addResponseInterceptor(function(data, operation) {
+            var extractedData;
+            if (operation === "getList") {
+                extractedData = data.data;
+                extractedData.meta = data.size;
+            } else {
+                extractedData = data.data;
+            }
+            return extractedData;
+        });
+
     });
 
 // Enable Cross-Origin Resource Sharing
@@ -47,7 +64,7 @@
 
         $stateProvider.state('dashboard.issues', {
 
-            url: '/issues',
+            url: '/issue',
             templateUrl: 'src/html/partials/issues.html',
             controller: 'issuesCtrl'
 
@@ -79,7 +96,7 @@
 
         $stateProvider.state('dashboard.dependencies', {
 
-            url: '/dependencies',
+            url: '/dependency',
             templateUrl: 'src/html/partials/dependencies.html',
             controller: 'dependenciesCtrl'
 

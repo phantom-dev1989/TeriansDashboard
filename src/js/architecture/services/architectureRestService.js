@@ -1,6 +1,6 @@
 (function (module) {
 
-    var architectureRestSvc = function () {
+    var architectureRestSvc = function (Restangular) {
 
         return {};
     };

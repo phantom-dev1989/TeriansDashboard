@@ -6,5 +6,10 @@ describe('projectsRestService', function () {
 
     beforeEach(module('app'));
 
+    it('/projects should return more than 0 projects', inject(function(projectsRestSvc){
+
+        expect(projectsRestSvc.getProjects().length).toBeGreaterThan(0);
+    }))
+
 
 });

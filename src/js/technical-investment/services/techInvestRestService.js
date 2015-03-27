@@ -1,6 +1,6 @@
 (function (module) {
 
-    var technicalInvestmentRestSvc = function () {
+    var technicalInvestmentRestSvc = function (Restangular) {
 
         return {};
     };

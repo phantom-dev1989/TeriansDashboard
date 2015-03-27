@@ -1,6 +1,6 @@
 (function (module) {
 
-    var trendingRestSvc = function () {
+    var trendingRestSvc = function (Restangular) {
 
         return {};
     };

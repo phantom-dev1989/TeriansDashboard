@@ -1,6 +1,6 @@
 (function (module) {
 
-    var scanRestSvc = function () {
+    var scanRestSvc = function (Restangular) {
 
         return {};
     };
