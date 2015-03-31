@@ -35,10 +35,12 @@
     <script src="lib/angular-mocks/angular-mocks.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/moment/moment.js"></script>
     <!-- endbower -->
 
     <!-- inject:js -->
     <script src="src/js/app/appModule.js"></script>
+    <script src="src/js/app/propsfilter.js"></script>
     <script src="src/js/app/controllers/appController.js"></script>
     <script src="src/js/app/directives/blueThumbnailDirective.js"></script>
     <script src="src/js/app/directives/logoDirective.js"></script>
@@ -49,22 +51,21 @@
     <script src="src/js/app/services/globalsService.js"></script>
     <script src="src/js/architecture/services/architectureRestService.js"></script>
     <script src="src/js/architecture/services/architectureService.js"></script>
-    <script src="src/js/dependency/services/dependenciesRestService.js"></script>
-    <script src="src/js/dependency/services/dependenciesService.js"></script>
-    <script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
-    <script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
-    <script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
-    <script src="src/js/diagnostics/services/alertingService.js"></script>
-    <script src="src/js/diagnostics/services/spinnerService.js"></script>
     <script src="src/js/authentication/services/addTokenService.js"></script>
     <script src="src/js/authentication/services/currentUserService.js"></script>
     <script src="src/js/authentication/services/formEncodeService.js"></script>
     <script src="src/js/authentication/services/localStorageService.js"></script>
     <script src="src/js/authentication/services/loginRedirectService.js"></script>
     <script src="src/js/authentication/services/oauthService.js"></script>
+    <script src="src/js/diagnostics/services/alertingService.js"></script>
+    <script src="src/js/diagnostics/services/spinnerService.js"></script>
+    <script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
+    <script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
+    <script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
+    <script src="src/js/dependency/services/dependencyRestService.js"></script>
+    <script src="src/js/dependency/services/dependencyService.js"></script>
     <script src="src/js/high-charts/controllers/highChartsController.js"></script>
     <script src="src/js/high-charts/service/highChartsResizeService.js"></script>
-    <script src="src/js/issue/controllers/issuesGridsterController.js"></script>
     <script src="src/js/high-charts/directives/highChartsAreaNegativeDirective.js"></script>
     <script src="src/js/high-charts/directives/highChartsBarStackedDirective.js"></script>
     <script src="src/js/high-charts/directives/highChartsBasicAreaDirective.js"></script>
@@ -85,13 +86,15 @@
     <script src="src/js/high-charts/directives/highChartsScatterPlotDirective.js"></script>
     <script src="src/js/high-charts/directives/highChartsSemiDonutDirective.js"></script>
     <script src="src/js/high-charts/directives/highChartsSpiderWebDirective.js"></script>
-    <script src="src/js/issue/services/issuesRestService.js"></script>
-    <script src="src/js/issue/services/issuesService.js"></script>
+    <script src="src/js/issue/controllers/issuesGridsterController.js"></script>
+    <script src="src/js/issue/services/issueRestService.js"></script>
+    <script src="src/js/issue/services/issueService.js"></script>
     <script src="src/js/joint-js/controllers/jointJsController.js"></script>
     <script src="src/js/joint-js/directives/jointJsUmlClassDiagramDirective.js"></script>
-    <script src="src/js/project/services/projectModalService.js"></script>
-    <script src="src/js/project/services/projectsRestService.js"></script>
-    <script src="src/js/project/services/projectsService.js"></script>
+    <script src="src/js/project/services/projectLodashService.js"></script>
+    <script src="src/js/project/services/projectRestService.js"></script>
+    <script src="src/js/project/services/projectService.js"></script>
+    <script src="src/js/scan/services/scanLodashService.js"></script>
     <script src="src/js/scan/services/scanRestService.js"></script>
     <script src="src/js/scan/services/scanService.js"></script>
     <script src="src/js/technical-investment/controllers/techInvestmentGridsterController.js"></script>
@@ -118,14 +121,14 @@
     <!-- endinject -->
 
     <!-- include spec files here... -->
-    <script type="text/javascript" src="test/spec/SpecHelper.js"></script>
-    <script src="test/spec/architectureRestServiceSpec.js"></script>
-    <script src="test/spec/dependenciesRestServiceSpec.js"></script>
-    <script src="test/spec/issuesRestServiceSpec.js"></script>
-    <script src="test/spec/projectsRestServiceSpec.js"></script>
-    <script src="test/spec/scanRestServiceSpec.js"></script>
-    <script src="test/spec/techInvestRestServiceSpec.js"></script>
-    <script src="test/spec/trendingRestServiceSpec.js"></script>
+    <script type="text/javascript" src="src/test/spec/SpecHelper.js"></script>
+    <script src="src/test/spec/architectureRestServiceSpec.js"></script>
+    <script src="src/test/spec/dependenciesRestServiceSpec.js"></script>
+    <script src="src/test/spec/issuesRestServiceSpec.js"></script>
+    <script src="src/test/spec/projectsRestServiceSpec.js"></script>
+    <script src="src/test/spec/scanRestServiceSpec.js"></script>
+    <script src="src/test/spec/techInvestRestServiceSpec.js"></script>
+    <script src="src/test/spec/trendingRestServiceSpec.js"></script>
 
 
 </head>

@@ -8,7 +8,7 @@
         $scope.signIn = function () {
 
             $state.go('dashboard.issues');
-            alertingSvc.addSuccess("SignIn Successful!");
+            alertingSvc.addSuccess("Your are Signed In!!");
 
         };
 

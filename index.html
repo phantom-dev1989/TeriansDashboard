@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <title>TERIANS DASHBOARD</title>
 
+    <!-- build:css css/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="lib/toastr/toastr.css" />
@@ -17,16 +18,20 @@
     <link rel="stylesheet" href="lib/angular-gridster/dist/angular-gridster.min.css" />
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
+    <!-- endbuild -->
 
+    <!-- build:css css/app.css -->
     <!-- inject:css -->
     <link rel="stylesheet" href="src/resources/css/terians.css">
     <!-- endinject -->
+    <!-- endbuild -->
 
 </head>
 <body ng-cloak>
 
 <ui-view></ui-view>
 
+<!-- build:js js/lib.js -->
 <!-- manual -->
 <script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
 <script src="lib/joint/dist/joint.min.js"></script>
@@ -57,10 +62,20 @@
 <script src="lib/angular-mocks/angular-mocks.js"></script>
 <script src="lib/angular-sanitize/angular-sanitize.js"></script>
 <script src="lib/angular-messages/angular-messages.js"></script>
+<script src="lib/moment/moment.js"></script>
 <!-- endbower -->
 
+<!-- manual -->
+<script src="lib/highcharts/modules/heatmap.js"></script>
+<script src="lib/highcharts/modules/solid-gauge.src.js"></script>
+<script src="lib/highcharts/modules/funnel.js"></script>
+<!-- manual -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
 <!-- inject:js -->
 <script src="src/js/app/appModule.js"></script>
+<script src="src/js/app/propsfilter.js"></script>
 <script src="src/js/app/controllers/appController.js"></script>
 <script src="src/js/app/directives/blueThumbnailDirective.js"></script>
 <script src="src/js/app/directives/logoDirective.js"></script>
@@ -71,22 +86,21 @@
 <script src="src/js/app/services/globalsService.js"></script>
 <script src="src/js/architecture/services/architectureRestService.js"></script>
 <script src="src/js/architecture/services/architectureService.js"></script>
-<script src="src/js/dependency/services/dependenciesRestService.js"></script>
-<script src="src/js/dependency/services/dependenciesService.js"></script>
-<script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
-<script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
-<script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
-<script src="src/js/diagnostics/services/alertingService.js"></script>
-<script src="src/js/diagnostics/services/spinnerService.js"></script>
 <script src="src/js/authentication/services/addTokenService.js"></script>
 <script src="src/js/authentication/services/currentUserService.js"></script>
 <script src="src/js/authentication/services/formEncodeService.js"></script>
 <script src="src/js/authentication/services/localStorageService.js"></script>
 <script src="src/js/authentication/services/loginRedirectService.js"></script>
 <script src="src/js/authentication/services/oauthService.js"></script>
+<script src="src/js/diagnostics/services/alertingService.js"></script>
+<script src="src/js/diagnostics/services/spinnerService.js"></script>
+<script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
+<script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
+<script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
+<script src="src/js/dependency/services/dependencyRestService.js"></script>
+<script src="src/js/dependency/services/dependencyService.js"></script>
 <script src="src/js/high-charts/controllers/highChartsController.js"></script>
 <script src="src/js/high-charts/service/highChartsResizeService.js"></script>
-<script src="src/js/issue/controllers/issuesGridsterController.js"></script>
 <script src="src/js/high-charts/directives/highChartsAreaNegativeDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsBarStackedDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsBasicAreaDirective.js"></script>
@@ -107,13 +121,15 @@
 <script src="src/js/high-charts/directives/highChartsScatterPlotDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsSemiDonutDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsSpiderWebDirective.js"></script>
-<script src="src/js/issue/services/issuesRestService.js"></script>
-<script src="src/js/issue/services/issuesService.js"></script>
+<script src="src/js/issue/controllers/issuesGridsterController.js"></script>
+<script src="src/js/issue/services/issueRestService.js"></script>
+<script src="src/js/issue/services/issueService.js"></script>
 <script src="src/js/joint-js/controllers/jointJsController.js"></script>
 <script src="src/js/joint-js/directives/jointJsUmlClassDiagramDirective.js"></script>
-<script src="src/js/project/services/projectModalService.js"></script>
-<script src="src/js/project/services/projectsRestService.js"></script>
-<script src="src/js/project/services/projectsService.js"></script>
+<script src="src/js/project/services/projectLodashService.js"></script>
+<script src="src/js/project/services/projectRestService.js"></script>
+<script src="src/js/project/services/projectService.js"></script>
+<script src="src/js/scan/services/scanLodashService.js"></script>
 <script src="src/js/scan/services/scanRestService.js"></script>
 <script src="src/js/scan/services/scanService.js"></script>
 <script src="src/js/technical-investment/controllers/techInvestmentGridsterController.js"></script>
@@ -138,12 +154,8 @@
 <script src="src/js/app/controllers/routing/techInvestController.js"></script>
 <script src="src/js/app/controllers/routing/trendingController.js"></script>
 <!-- endinject -->
-
-<!-- manual -->
-<script src="lib/highcharts/modules/heatmap.js"></script>
-<script src="lib/highcharts/modules/solid-gauge.src.js"></script>
-<script src="lib/highcharts/modules/funnel.js"></script>
-<!-- manual -->
+<!-- inject:templates:js -->
+<!-- endbuild -->
 
 </body>
 </html>

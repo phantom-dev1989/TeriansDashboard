@@ -4,28 +4,30 @@
 
 (function () {
 
-    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap']);
+    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection', 'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap']);
 
 // Restangular Configuration
     app.config(function (RestangularProvider) {
         // Note that we run everything on the localhost
-        RestangularProvider.setBaseUrl('http://localhost/terians/api/v1');
+        RestangularProvider.setBaseUrl('http://localhost:8080/terians/api/v1');
     });
 
 // Extra data from Collections Nested in JSON
-    app.config(function(RestangularProvider) {
+    app.config(function (RestangularProvider) {
 
         // add a response intereceptor
-        RestangularProvider.addResponseInterceptor(function(data, operation) {
+        RestangularProvider.addResponseInterceptor(function (data, operation) {
             var extractedData;
             if (operation === "getList") {
                 extractedData = data.data;
                 extractedData.meta = data.size;
             } else {
-                extractedData = data.data;
+                extractedData = data;
             }
             return extractedData;
         });
+
+        RestangularProvider.setDefaultHttpFields({cache: true});
 
     });
 

@@ -1,6 +1,7 @@
 module.exports = function() {
 
     var client = '.';
+    var temp = './.tmp/';
 
     var config = {
 
@@ -16,6 +17,11 @@ module.exports = function() {
         index: 'index.html',
         defaultPort: 63342,
         specRunner: 'SpecRunner.html',
+        build: './build/',
+        images : 'src/resources/img/**/*.*',
+        fonts:'lib/font-awesome/fonts/**/*.*',
+        temp : temp,
+        htmltemplates: 'src/html/**/*.html',
         js: [
             'src/js/**/*.js'
         ],
@@ -26,6 +32,17 @@ module.exports = function() {
             json: require('./bower.json'),
             directory: 'lib',
             ignorePath: '../..'
+        },
+        /**
+         * angular emplate cache
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'app',
+                standAlone: false,
+                root: '/'
+            }
         }
 
     };
