@@ -9,15 +9,15 @@
             scope: {
                 data: '=',
                 title: '=',
-                xAxis: '=',
-                yAxis: '='
+                xaxis: '=',
+                yaxis: '='
             },
             link: function (scope, element) {
 
                 var data = scope.data;
                 var title = scope.title;
-                var xAxis = scope.xAxis;
-                var yAxis = scope.yAxis;
+                var xAxis = scope.xaxis;
+                var yAxis = scope.yaxis;
 
                 $(element).highcharts({
                     chart: {

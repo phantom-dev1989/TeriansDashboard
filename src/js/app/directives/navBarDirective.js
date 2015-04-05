@@ -6,10 +6,10 @@
             restrict: 'E',
             replace: true,
             templateUrl: 'src/html/partials/directives/teriansNavBar.html',
-            controller: function ($scope, projectsSvc, scanSvc, projectsRestSvc, $modal, alertingSvc) {
+            controller: function ($scope, projectsSvc, scanSvc, projectsRestSvc, $modal, alertingSvc, $state) {
 
                 projectsRestSvc.getProjects().then(function (projects) {
-                    projectsSvc.setProjects(projects);
+                    projectsSvc.setCurrentProjects(projects);
                     $scope.projects = _.slice(projects, 0, 5);
                 }, function () {
                     alertingSvc.addError("There was an error getting Projects data");
@@ -22,7 +22,7 @@
                         size: 'lg',
                         controller: function ($scope, $modalInstance, projectsLodashSvc, scanLodashSvc, scanRestSvc) {
 
-                            $scope.scans = [];
+                            $scope.currentScans = [];
                             $scope.isOkDisabled = true;
                             $scope.selectedScan = {};
 
@@ -44,7 +44,7 @@
                                 multiSelect: false,
                                 exporterMenuCsv: false,
                                 enableGridMenu: false,
-                                minRowsToShow: projectsSvc.projects.length,
+                                minRowsToShow: projectsSvc.getCurrentProjects().length,
                                 columnDefs: [
                                     {field: 'name', enableSorting: false, enableColumnMenu: false}
                                 ],
@@ -59,13 +59,13 @@
                                         var currentProjectIdSelected = projectsLodashSvc.getProjectId(row.entity.name);
                                         projectsSvc.setCurrentProjectId(currentProjectIdSelected);
                                         scanRestSvc.getScans(currentProjectIdSelected).then(function (scans) {
-                                            scanSvc.setScans(scans);
-                                            $scope.scans = scanLodashSvc.getScanDateAndVersions(scans);
+                                            scanSvc.setCurrentScans(scans);
+                                            $scope.currentScans = scanLodashSvc.getScanDateAndVersions(scans);
                                         }, function () {
                                             alertingSvc.addError("There was an error getting Project Scans data");
                                         });
                                     } else {
-                                        $scope.scans = [];
+                                        $scope.currentScans = [];
                                     }
 
                                 });
@@ -81,13 +81,13 @@
                                 multiSelect: false,
                                 exporterMenuCsv: false,
                                 enableGridMenu: false,
-                                minRowsToShow: 'scans.length',
+                                minRowsToShow: 'currentScans.length',
                                 columnDefs: [
                                     {field: 'date', enableSorting: false, enableColumnMenu: false},
                                     {field: 'projectVersion', enableSorting: false, enableColumnMenu: false},
                                     {field: 'teriansId', enableSorting: false, enableColumnMenu: false, visible: false}
                                 ],
-                                data: 'scans'
+                                data: 'currentScans'
                             };
 
                             $scope.gridOptionsScan.onRegisterApi = function (gridApi) {
@@ -95,7 +95,7 @@
                                 gridApi.selection.on.rowSelectionChanged($scope, function (row) {
 
                                     if (row.isSelected) {
-                                        var projectId = projectsSvc.currentProjectId;
+                                        var projectId = projectsSvc.getCurrentProjectId();
                                         var scanId = row.entity.teriansId;
                                         scanRestSvc.getScan(projectId, scanId).then(function (scan) {
                                             $scope.selectedScan = scan;
@@ -117,6 +117,7 @@
                         // save scan so it can be used to populate visualizations
                         scanSvc.setCurrentScan(selectedScan);
                         alertingSvc.addInfo("Loading Scan Data");
+                        $state.reload();
                     }, function(){
                         alertingSvc.addInfo("Project Modal Dismissed");
                     });

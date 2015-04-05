@@ -1,33 +1,28 @@
 (function (module) {
 
-    var scanSvc = function () {
+    var scanSvc = function (localStorageService) {
 
-        var scans;
-        var currentScan;
-
-        var getScans = function () {
-            return scans;
+        var getCurrentScans = function () {
+            return localStorageService.get("currentScans");
         };
 
-        var setScans = function (scans) {
-            this.scans = scans;
+        var setCurrentScans = function (currentScans) {
+            localStorageService.set("currentScans", currentScans);
         };
 
         var getCurrentScan = function () {
-            return currentScan;
+            return localStorageService.get("currentScan");
         };
 
         var setCurrentScan = function (currentScan) {
-            this.currentScan = currentScan;
+            localStorageService.set("currentScan", currentScan);
         };
 
         return {
-            scans: scans,
-            getScans: getScans,
-            setScans: setScans,
+            getCurrentScans: getCurrentScans,
+            setCurrentScans: setCurrentScans,
             getCurrentScan: getCurrentScan,
-            setCurrentScan: setCurrentScan,
-            currentScan: currentScan
+            setCurrentScan: setCurrentScan
         };
     };
 

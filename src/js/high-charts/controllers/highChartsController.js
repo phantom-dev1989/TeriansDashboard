@@ -193,7 +193,7 @@
 
         // data here would come from web service
         $scope.title = {
-            text: 'Stacked bar chart'
+            text: 'Top 5 Poorest Quality Packages'
         };
 
         $scope.xAxis = {
@@ -203,20 +203,14 @@
         $scope.yAxis = {
             min: 0,
             title: {
-                text: 'Total fruit consumption'
+                text: 'Total Issue Count'
             }
         };
 
 
         $scope.data = [{
-            name: 'John',
+            name: 'Top 5 Poorest Quality Packages',
             data: [5, 3, 4, 7, 2]
-        }, {
-            name: 'Jane',
-            data: [2, 2, 3, 2, 1]
-        }, {
-            name: 'Joe',
-            data: [3, 4, 4, 2, 5]
         }];
 
     });
@@ -348,19 +342,6 @@
         $scope.data = [{
             name: 'System Information Leak - Internal',
             data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-        }, {
-            name: 'System Information Leak - External',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-        }, {
-            name: 'System Information Leak - JSP',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-
-        }, {
-            name: 'System Information Leak - Logging',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-
         }];
 
     });
@@ -607,12 +588,6 @@
         $scope.data = [{
             name: 'John',
             data: [5, 3, 4, 7, 2]
-        }, {
-            name: 'Jane',
-            data: [2, 2, 3, 2, 1]
-        }, {
-            name: 'Joe',
-            data: [3, 4, 4, 2, 5]
         }];
 
     });

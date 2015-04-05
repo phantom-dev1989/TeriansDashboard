@@ -5,7 +5,10 @@
             <div class="col-lg-12">
                 <ol class="breadcrumb">
                     <li class="active">
-                        <i class="fa fa-dashboard"></i> Best Practices
+                        Best Practices Issues
+                    </li>
+                    <li class="active">
+                        Scanned {{scanned}}
                     </li>
                 </ol>
             </div>
@@ -14,43 +17,75 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large="33320" text-small="Issues"/>
+                <terians-blue-thumbnail text-large={{issueCount}} text-small="Issues"/>
             </div>
             <div class="col-lg-2 col-md-3">
                 <terians-blue-thumbnail text-large="1234054" text-small="Lines of Code"/>
             </div>
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large="500" text-small="Class"/>
+                <terians-blue-thumbnail text-large={{techdebt}} text-small="Tech Debt"/>
             </div>
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large="5607" text-small="Methods"/>
+                <terians-blue-thumbnail text-large={{complexity}} text-small="Complexity"/>
             </div>
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large="54.89" text-small="Complexity"/>
+                <terians-blue-thumbnail text-large={{abstractness}} text-small="Abstractness"/>
             </div>
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large="476 Days" text-small="Technical Debt"/>
+                <terians-blue-thumbnail text-large={{instability}} text-small="Instability"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{packageCount}} text-small="Packages"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{clazzCount}} text-small="Classes"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{methodCount}} text-small="Methods"/>
             </div>
         </div>
         <!-- /.row -->
-        <div ng-controller="issuesGridsterCtrl">
+        <div>
             <div gridster="gridsterOpts">
                 <ul>
                     <div gridster-item>
-                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
-                            <div ng-controller="highChartsBasicColumnCtrl">
+                        <terians-panel title="Top Best Practices Issues">
+                            <div ng-controller="issuesBestPracticesPieChartCtrl">
+                                <terians-high-charts-pie-legend data="data" title="title"
+                                                                htooltip="tooltip"></terians-high-charts-pie-legend>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Top Poorest Quality Packages">
+                            <div ng-controller="issuesBestPracticesPackagesBarChartCtrl">
+                                <terians-high-charts-bar-stacked title="title" data="data" xaxis="xAxis"
+                                                                 yaxis="yAxis"></terians-high-charts-bar-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Top Poorest Quality Classes">
+                            <div ng-controller="issuesBestPracticesClassesBarChartCtrl">
+                                <terians-high-charts-column-stacked data="data" title="title" xaxis="xAxis"
+                                                                    yaxis="yAxis"
+                                                                    htooltip="tooltip"></terians-high-charts-column-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Top Issue Categories">
+                            <div ng-controller="issuesBestPracticesCategoryBarChartCtrl">
                                 <terians-high-charts-basic-column data="data" title="title"
-                                                                  subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                  subTitle="subTitle" xaxis="xAxis" yaxis="yAxis"
                                                                   htooltip="tooltip"></terians-high-charts-basic-column>
                             </div>
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
-                            <div ng-controller="highChartsBasicAreaCtrl">
-                                <terians-high-charts-basic-area data="data" title="title"
-                                                                subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
-                                                                htooltip="tooltip"></terians-high-charts-basic-area>
+                        <terians-panel title="Top Poor Quality Files">
+                            <div ng-controller="issuesBestPracticesFilesTreeMapCtrl">
+                                <terians-high-charts-tree-map data="data" title="title"></terians-high-charts-tree-map>
                             </div>
                         </terians-panel>
                     </div>

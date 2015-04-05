@@ -5,12 +5,46 @@
             <div class="col-lg-12">
                 <ol class="breadcrumb">
                     <li class="active">
-                        <i class="fa fa-dashboard"></i> Trending
+                        Trending
+                    </li>
+                    <li class="active">
+                        Scanned {{scanned}}
                     </li>
                 </ol>
             </div>
         </div>
-        <div ng-controller="trendingGridsterCtrl">
+        <!-- /.row -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{issueCount}} text-small="Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large="1234054" text-small="Lines of Code"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{techdebt}} text-small="Tech Debt"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{complexity}} text-small="Complexity"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{abstractness}} text-small="Abstractness"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{instability}} text-small="Instability"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{packageCount}} text-small="Packages"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{clazzCount}} text-small="Classes"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{methodCount}} text-small="Methods"/>
+            </div>
+        </div>
+        <div>
             <div gridster="gridsterOpts">
                 <ul>
 
@@ -36,6 +70,33 @@
 
                     <div gridster-item>
                         <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsBasicAreaCtrl">
+                                <terians-high-charts-basic-area data="data" title="title"
+                                                                subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                htooltip="tooltip"></terians-high-charts-basic-area>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsBasicAreaSplineCtrl">
+                                <terians-high-charts-basic-area-spline data="data"
+                                                                       title="title" xAxis="xAxis" yAxis="yAxis"
+                                                                       htooltip="tooltip"></terians-high-charts-basic-area-spline>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Top Issue Categories">
+                            <div ng-controller="highChartsBasicColumnCtrl">
+                                <terians-high-charts-basic-column data="data" title="title"
+                                                                  subTitle="subTitle" xaxis="xAxis" yaxis="yAxis"
+                                                                  htooltip="tooltip"></terians-high-charts-basic-column>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
                             <div ng-controller="highChartsBarStackedCtrl">
                                 <terians-high-charts-bar-stacked title="title" data="data" xAxis="xAxis"
                                                                  yAxis="yAxis"></terians-high-charts-bar-stacked>
@@ -43,11 +104,190 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
                             <div ng-controller="highChartsGaugeCtrl">
                                 <terians-high-charts-gauge-chart title="title" options="options" data="data"
                                                                  chartName="chartName"
                                                                  htooltip="tooltip"></terians-high-charts-gauge-chart>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Transaction Panel" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsColumnStackedCtrl">
+                                <terians-high-charts-column-stacked data="data" title="title" xAxis="xAxis"
+                                                                    yAxis="yAxis"
+                                                                    htooltip="tooltip"></terians-high-charts-column-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsSemiDonutCtrl">
+                                <terians-high-charts-semi-donut data="data" title="title"
+                                                                htooltip="tooltip"></terians-high-charts-semi-donut>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsPieLegendCtrl">
+                                <terians-high-charts-pie-legend data="data" title="title"
+                                                                htooltip="tooltip"></terians-high-charts-pie-legend>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsLineChartBasicCtrl">
+                                <terians-high-charts-line-chart-basic title="title" subTitle="subTitle"
+                                                                      data="data" xAxis="xAxis" yAxis="yAxis"
+                                                                      htooltip="tooltip"></terians-high-charts-line-chart-basic>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Transaction Panel" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsColumnRangeCtrl">
+                                <terians-high-charts-column-range title="title" subTitle="subTitle"
+                                                                  data="data" xAxis="xAxis" yAxis="yAxis"
+                                                                  htooltip="tooltip"></terians-high-charts-column-range>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsAreaNegativeCtrl">
+                                <terians-high-charts-area-negative title="title" data="data"
+                                                                   xAxis="xAxis"></terians-high-charts-area-negative>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsColumnNegativeCtrl">
+                                <terians-high-charts-column-negative title="title" data="data"
+                                                                     xAxis="xAxis"></terians-high-charts-column-negative>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issues Line Chart" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsLineChartBasicCtrl">
+                                <terians-high-charts-line-chart-basic title="title" subTitle="subTitle"
+                                                                      data="data" xAxis="xAxis" yAxis="yAxis"
+                                                                      htooltip="tooltip"></terians-high-charts-line-chart-basic>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Column Range Chart" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsColumnRangeCtrl">
+                                <terians-high-charts-column-range title="title" subTitle="subTitle"
+                                                                  data="data" xAxis="xAxis" yAxis="yAxis"
+                                                                  htooltip="tooltip"></terians-high-charts-column-range>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Negaitve Area Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsAreaNegativeCtrl">
+                                <terians-high-charts-area-negative title="title"
+                                                                   data="data"
+                                                                   xAxis="xAxis"></terians-high-charts-area-negative>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Column Negative Chart" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsColumnNegativeCtrl">
+                                <terians-high-charts-column-negative title="title"
+                                                                     data="data"
+                                                                     xAxis="xAxis"></terians-high-charts-column-negative>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsBasicAreaPercentageCtrl">
+                                <terians-high-charts-basic-area-percentage data="data" title="title"
+                                                                           subTitle="subTitle" xAxis="xAxis"
+                                                                           yAxis="yAxis"
+                                                                           htooltip="tooltip"></terians-high-charts-basic-area-percentage>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsBasicAreaStackedCtrl">
+                                <terians-high-charts-basic-area-stacked data="data" title="title"
+                                                                        subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                        htooltip="tooltip"></terians-high-charts-basic-area-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsBasicAreaSplineCtrl">
+                                <terians-high-charts-basic-area-spline data="data"
+                                                                       title="title" xAxis="xAxis" yAxis="yAxis"
+                                                                       htooltip="tooltip"></terians-high-charts-basic-area-spline>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Transaction Panel" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsColumnStackedCtrl">
+                                <terians-high-charts-column-stacked data="data" title="title" xAxis="xAxis"
+                                                                    yAxis="yAxis"
+                                                                    htooltip="tooltip"></terians-high-charts-column-stacked>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsSemiDonutCtrl">
+                                <terians-high-charts-semi-donut data="data" title="title"
+                                                                htooltip="tooltip"></terians-high-charts-semi-donut>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsPieLegendCtrl">
+                                <terians-high-charts-pie-legend data="data" title="title"
+                                                                htooltip="tooltip"></terians-high-charts-pie-legend>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issues Area" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="highChartsScatterPlotCtrl">
+                                <terians-high-charts-scatter-plot data="data" title="title"
+                                                                  subTitle="subTitle" xAxis="xAxis" yAxis="yAxis"
+                                                                  htooltip="tooltip"></terians-high-charts-scatter-plot>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Transaction Panel" icon="fa fa-clock-o fa-fw">
+                            <div ng-controller="highChartsPolarCtrl">
+                                <terians-high-charts-polar data="data" title="title"></terians-high-charts-polar>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Donut Chart" icon="fa fa-money fa-fw">
+                            <div ng-controller="highChartsPyramidCtrl">
+                                <terians-high-charts-pyramid data="data" title="title"></terians-high-charts-pyramid>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Tasks Panel" icon="fa fa-long-arrow-right fa-fw">
+                            <div ng-controller="highChartsSpiderWebCtrl">
+                                <terians-high-charts-spider-web data="data" title="title"
+                                                                categories="categories"></terians-high-charts-spider-web>
                             </div>
                         </terians-panel>
                     </div>

@@ -63,10 +63,12 @@
 <script src="lib/angular-sanitize/angular-sanitize.js"></script>
 <script src="lib/angular-messages/angular-messages.js"></script>
 <script src="lib/moment/moment.js"></script>
+<script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
 <!-- endbower -->
 
 <!-- manual -->
 <script src="lib/highcharts/modules/heatmap.js"></script>
+<script src="lib/highcharts/modules/treemap.js"></script>
 <script src="lib/highcharts/modules/solid-gauge.src.js"></script>
 <script src="lib/highcharts/modules/funnel.js"></script>
 <!-- manual -->
@@ -92,13 +94,13 @@
 <script src="src/js/authentication/services/localStorageService.js"></script>
 <script src="src/js/authentication/services/loginRedirectService.js"></script>
 <script src="src/js/authentication/services/oauthService.js"></script>
-<script src="src/js/diagnostics/services/alertingService.js"></script>
-<script src="src/js/diagnostics/services/spinnerService.js"></script>
+<script src="src/js/dependency/services/dependencyRestService.js"></script>
+<script src="src/js/dependency/services/dependencyService.js"></script>
 <script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
 <script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
 <script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
-<script src="src/js/dependency/services/dependencyRestService.js"></script>
-<script src="src/js/dependency/services/dependencyService.js"></script>
+<script src="src/js/diagnostics/services/alertingService.js"></script>
+<script src="src/js/diagnostics/services/spinnerService.js"></script>
 <script src="src/js/high-charts/controllers/highChartsController.js"></script>
 <script src="src/js/high-charts/service/highChartsResizeService.js"></script>
 <script src="src/js/high-charts/directives/highChartsAreaNegativeDirective.js"></script>
@@ -121,9 +123,41 @@
 <script src="src/js/high-charts/directives/highChartsScatterPlotDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsSemiDonutDirective.js"></script>
 <script src="src/js/high-charts/directives/highChartsSpiderWebDirective.js"></script>
-<script src="src/js/issue/controllers/issuesGridsterController.js"></script>
+<script src="src/js/high-charts/directives/highChartsTreeMapDirective.js"></script>
+<script src="src/js/issue/controllers/issuesBestPracticesCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesBestPracticesClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesBestPracticesFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesBestPracticesPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesBestPracticesPieChart.js"></script>
+<script src="src/js/issue/controllers/issuesCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesCriticalCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesCriticalClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesCriticalFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesCriticalPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesCriticalPieChart.js"></script>
+<script src="src/js/issue/controllers/issuesDrillDownTableUIFridController.js"></script>
+<script src="src/js/issue/controllers/issuesFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesHighCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesHighClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesHighFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesHighPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesHighPieChart.js"></script>
+<script src="src/js/issue/controllers/issuesLowCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesLowClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesLowFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesLowPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesLowPieChart.js"></script>
+<script src="src/js/issue/controllers/issuesMediumCategoryBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesMediumClassesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesMediumFilesTreeMap.js"></script>
+<script src="src/js/issue/controllers/issuesMediumPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesMediumPieChart.js"></script>
+<script src="src/js/issue/controllers/issuesPackagesBarChart.js"></script>
+<script src="src/js/issue/controllers/issuesPieChart.js"></script>
 <script src="src/js/issue/services/issueRestService.js"></script>
 <script src="src/js/issue/services/issueService.js"></script>
+<script src="src/js/issue/services/issuesChartService.js"></script>
 <script src="src/js/joint-js/controllers/jointJsController.js"></script>
 <script src="src/js/joint-js/directives/jointJsUmlClassDiagramDirective.js"></script>
 <script src="src/js/project/services/projectLodashService.js"></script>
@@ -132,10 +166,8 @@
 <script src="src/js/scan/services/scanLodashService.js"></script>
 <script src="src/js/scan/services/scanRestService.js"></script>
 <script src="src/js/scan/services/scanService.js"></script>
-<script src="src/js/technical-investment/controllers/techInvestmentGridsterController.js"></script>
 <script src="src/js/technical-investment/services/techInvestRestService.js"></script>
 <script src="src/js/technical-investment/services/techInvestService.js"></script>
-<script src="src/js/trending/controllers/trendingGridsterController.js"></script>
 <script src="src/js/trending/services/trendingRestService.js"></script>
 <script src="src/js/trending/services/trendingService.js"></script>
 <script src="src/js/app/controllers/routing/architectureController.js"></script>

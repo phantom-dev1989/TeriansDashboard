@@ -3,10 +3,9 @@
  */
 (function (module) {
 
-    var dashboardCtrl = function ($scope) {
+    var dashboardCtrl = function () {
 
         $(window).resize();
-        $scope.project = "Webgoat 5.4";
 
     };
 

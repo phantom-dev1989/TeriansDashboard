@@ -4,7 +4,7 @@
 
 (function () {
 
-    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection', 'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap']);
+    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection', 'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule']);
 
 // Restangular Configuration
     app.config(function (RestangularProvider) {
@@ -69,6 +69,11 @@
             url: '/issue',
             templateUrl: 'src/html/partials/issues.html',
             controller: 'issuesCtrl'
+            /*resolve: {
+             issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }*/
 
         });
 
@@ -76,7 +81,12 @@
 
             url: '/critical',
             templateUrl: 'src/html/partials/critical.html',
-            controller: 'criticalIssuesCtrl'
+            controller: 'criticalIssuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getCriticalIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -108,7 +118,12 @@
 
             url: '/issuesDrillDown',
             templateUrl: 'src/html/partials/issuesDrillDown.html',
-            controller: 'issuesDrillDownCtrl'
+            controller: 'issuesDrillDownCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc, projectsSvc) {
+                    return issuesRestSvc.getIssues(projectsSvc.getCurrentProjectId(), scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -116,7 +131,12 @@
 
             url: '/low',
             templateUrl: 'src/html/partials/low.html',
-            controller: 'lowIssuesCtrl'
+            controller: 'lowIssuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getLowIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -124,15 +144,24 @@
 
             url: '/high',
             templateUrl: 'src/html/partials/high.html',
-            controller: 'highIssuesCtrl'
-
+            controller: 'highIssuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getHighIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }
         });
 
         $stateProvider.state('dashboard.medium', {
 
             url: '/medium',
             templateUrl: 'src/html/partials/medium.html',
-            controller: 'mediumIssuesCtrl'
+            controller: 'mediumIssuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getMediumIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -140,7 +169,12 @@
 
             url: '/bestPractices',
             templateUrl: 'src/html/partials/bestPractices.html',
-            controller: 'bestPracticesIssuesCtrl'
+            controller: 'bestPracticesIssuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getBestPracticesIssues(scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -155,5 +189,10 @@
         $urlRouterProvider.otherwise('/signin');
 
     });
+
+    app.run(['$state', '$stateParams',
+        function($state, $stateParams) {
+            //this solves page refresh and getting back to state
+        }]);
 
 }());
