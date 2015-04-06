@@ -4,7 +4,8 @@
 
 (function () {
 
-    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection', 'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule']);
+    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection',
+        'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule','ui.grid.exporter','ngAnimate', 'ngTouch']);
 
 // Restangular Configuration
     app.config(function (RestangularProvider) {

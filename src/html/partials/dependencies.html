@@ -48,14 +48,52 @@
             <div class="col-lg-6">
                 <terians-panel title="Dependencies">
                     <div ng-controller="dependencyTableCtrl">
-                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection></div>
+                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection ui-grid-exporter></div>
+                        <div class="pull-right">
+                            <label>Columns</label>
+                            <select ng-model="export_column_type">
+                                <option value='all'>All</option>
+                                <option value='visible'>Visible</option>
+                            </select>
+                            <label>Rows</label>
+                            <select ng-model="export_row_type">
+                                <option value='all'>All</option>
+                                <option value='visible'>Visible</option>
+                                <option value='selected'>Selected</option>
+                            </select>
+                            <label>Format</label>
+                            <select ng-model="export_format">
+                                <option value='csv'>CSV</option>
+                                <option value='pdf'>PDF</option>
+                            </select>
+                            <button ng-click="export()" class="btn panel-blue" >Export</button>
+                        </div>
                     </div>
                 </terians-panel>
             </div>
             <div class="col-lg-6">
                 <terians-panel title="Used In">
                     <div ng-controller="dependencyClassTableCtrl">
-                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection></div>
+                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection ui-grid-exporter></div>
+                        <div class="pull-right">
+                            <label>Columns</label>
+                            <select ng-model="export_column_type">
+                                <option value='all'>All</option>
+                                <option value='visible'>Visible</option>
+                            </select>
+                            <label>Rows</label>
+                            <select ng-model="export_row_type">
+                                <option value='all'>All</option>
+                                <option value='visible'>Visible</option>
+                                <option value='selected'>Selected</option>
+                            </select>
+                            <label>Format</label>
+                            <select ng-model="export_format">
+                                <option value='csv'>CSV</option>
+                                <option value='pdf'>PDF</option>
+                            </select>
+                            <button ng-click="export()" class="btn panel-blue" >Export</button>
+                        </div>
                     </div>
                 </terians-panel>
             </div>
