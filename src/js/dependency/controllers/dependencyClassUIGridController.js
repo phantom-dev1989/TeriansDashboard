@@ -9,95 +9,68 @@
             showColumnFooter: true,
             exporterMenuCsv: true,
             enableGridMenu: true,
+            enableSelectAll: false,
+            multiSelect: false,
+            enableRowSelection: true,
             columnDefs: [
-                {field: 'firstName', enableSorting: true, enableColumnMenu: true},
-                {field: 'lastName', enableSorting: true, enableColumnMenu: true},
-                {field: 'company', enableSorting: true, enableColumnMenu: true},
-                {field: 'employed', enableSorting: false, enableColumnMenu: true}
-            ],
-            gridMenuCustomItems: [
-                {
-                    title: 'Rotate Grid',
-                    action: function ($event) {
-                        this.grid.element.toggleClass('rotated');
-                    }
-                }
+                {field: 'Class', enableSorting: true, enableColumnMenu: true}
             ],
             data: [
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Class": "Main.java"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Class": "Main.java"
                 }
             ]
 
+        };
+
+        $scope.gridOptions.onRegisterApi = function (gridApi) {
+            $scope.gridApi = gridApi;
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+
+                if (row.isSelected) {
+
+                    // Get the Class object set the source code in the scope
+                    // $scope.source = class.source
+                    // $scope.lineNumber = class.linenumbers
+
+                } else {
+
+                }
+
+            });
         };
 
     };

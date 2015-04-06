@@ -3,10 +3,9 @@
  */
 (function (module) {
 
-    var issuesCtrl = function ($scope, scanSvc, moment) {
+    var issuesCtrl = function ($scope, scanSvc, moment, issues) {
 
-        //$scope.issues = getCurrentIssues;
-        //console.log(issues);
+        $scope.issues = issues;
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
         $scope.complexity = scanSvc.getCurrentScan().complexity;

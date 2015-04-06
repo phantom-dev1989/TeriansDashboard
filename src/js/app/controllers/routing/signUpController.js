@@ -3,14 +3,26 @@
  */
 (function (module) {
 
-    var signUpCtrl = function ($scope, $state) {
+    var signUpCtrl = function ($scope, $state, localStorageService, scanSvc, scanRestSvc, alertingSvc) {
 
         $scope.cancelSignUp = function () {
+            localStorageService.clearAll();
             $state.go('signin');
         };
 
         $scope.signUp = function () {
-            $state.go('dashboard.issues');
+            if (scanSvc.getCurrentScan() === undefined || scanSvc.getCurrentScan() === null) {
+
+                scanRestSvc.getLastScan().then(function (scan) {
+
+                    scanSvc.setCurrentScan(scan);
+                    $state.go('dashboard.issues');
+                    alertingSvc.addSuccess("You are Signed In!!");
+
+                }, function () {
+                    alertingSvc.addError("There was an error getting the last scan data");
+                });
+            }
         };
 
 

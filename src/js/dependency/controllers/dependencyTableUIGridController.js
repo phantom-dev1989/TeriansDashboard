@@ -13,97 +13,66 @@
             showColumnFooter: true,
             exporterMenuCsv: true,
             enableGridMenu: true,
+            enableSelectAll: false,
+            multiSelect: false,
+            enableRowSelection: true,
             columnDefs: [
-                {field: 'firstName', enableSorting: true, enableColumnMenu: true},
-                {field: 'lastName', enableSorting: true, enableColumnMenu: true},
-                {field: 'company', enableSorting: true, enableColumnMenu: true},
-                {field: 'employed', enableSorting: false, enableColumnMenu: true}
-            ],
-            gridMenuCustomItems: [
-                {
-                    title: 'Rotate Grid',
-                    action: function ($event) {
-                        this.grid.element.toggleClass('rotated');
-                    }
-                }
+                {field: 'Dependency', enableSorting: true, enableColumnMenu: true}
             ],
             data: [
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "employed": true
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 },
                 {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "employed": false
+                    "Dependency": "org.apache.commons"
                 }
             ]
-
         };
 
+        $scope.gridOptions.onRegisterApi = function (gridApi) {
+            $scope.gridApi = gridApi;
+            gridApi.selection.on.rowSelectionChanged($scope, function (row) {
+
+                if (row.isSelected) {
+
+                 // Get the Dependency Object using the dependency ID
+
+                } else {
+
+                }
+
+            });
+        };
     };
 
     module.controller("dependencyTableCtrl", dependencyTableCtrl);

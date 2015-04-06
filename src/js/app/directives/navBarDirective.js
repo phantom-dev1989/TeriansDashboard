@@ -113,12 +113,12 @@
                         }
                     });
 
-                    modalInstance.result.then(function(selectedScan){
+                    modalInstance.result.then(function (selectedScan) {
                         // save scan so it can be used to populate visualizations
                         scanSvc.setCurrentScan(selectedScan);
                         alertingSvc.addInfo("Loading Scan Data");
                         $state.reload();
-                    }, function(){
+                    }, function () {
                         alertingSvc.addInfo("Project Modal Dismissed");
                     });
                 }

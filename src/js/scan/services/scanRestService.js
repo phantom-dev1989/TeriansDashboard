@@ -15,8 +15,9 @@
         };
 
         var getLastScan = function () {
-            return Restangular.all('scans').getList({scanned: 'last'});
+            return Restangular.one('scans', 'date').get({scanned: 'last'});
         };
+
 
         return {
             getScans: getScans,

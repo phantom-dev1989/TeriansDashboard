@@ -68,13 +68,13 @@
 
             url: '/issue',
             templateUrl: 'src/html/partials/issues.html',
-            controller: 'issuesCtrl'
-            /*resolve: {
-             issues: function (issuesRestSvc, scanSvc) {
+            controller: 'issuesCtrl',
+            resolve: {
+                issues: function (issuesRestSvc, scanSvc, scanRestSvc, alertingSvc) {
+
                     return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
                 }
-            }*/
-
+            }
         });
 
         $stateProvider.state('dashboard.critical', {
@@ -120,8 +120,8 @@
             templateUrl: 'src/html/partials/issuesDrillDown.html',
             controller: 'issuesDrillDownCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc, projectsSvc) {
-                    return issuesRestSvc.getIssues(projectsSvc.getCurrentProjectId(), scanSvc.getCurrentScan().teriansId);
+                issues: function (issuesRestSvc, scanSvc) {
+                    return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
                 }
             }
 
@@ -191,7 +191,7 @@
     });
 
     app.run(['$state', '$stateParams',
-        function($state, $stateParams) {
+        function ($state, $stateParams) {
             //this solves page refresh and getting back to state
         }]);
 

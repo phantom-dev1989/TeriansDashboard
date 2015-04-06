@@ -5,8 +5,6 @@
 
     var mediumIssuesCtrl = function ($scope, scanSvc, moment, issues) {
 
-        console.log(issues);
-
         $scope.issues = issues;
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;

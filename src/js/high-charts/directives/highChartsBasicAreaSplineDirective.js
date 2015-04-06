@@ -8,16 +8,16 @@
             scope: {
                 data: '=',
                 title: '=',
-                xAxis: '=',
-                yAxis: '=',
+                xaxis: '=',
+                yaxis: '=',
                 tooltip: '=htooltip'
             },
             link: function (scope, element) {
 
                 var data = scope.data;
                 var title = scope.title;
-                var xAxis = scope.xAxis;
-                var yAxis = scope.yAxis;
+                var xAxis = scope.xaxis;
+                var yAxis = scope.yaxis;
                 var tooltip = scope.tooltip;
 
                 $(element).highcharts({

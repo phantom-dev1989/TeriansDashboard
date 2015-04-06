@@ -9,13 +9,13 @@
             scope: {
                 title: '=',
                 data: '=',
-                xAxis: '='
+                xaxis: '='
             },
             link: function (scope, element) {
 
                 var data = scope.data;
                 var title = scope.title;
-                var xAxis = scope.xAxis;
+                var xAxis = scope.xaxis;
 
                 $(element).highcharts({
                     chart: {
