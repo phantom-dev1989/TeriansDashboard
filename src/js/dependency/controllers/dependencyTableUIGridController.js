@@ -72,7 +72,7 @@
 
                 if (row.isSelected) {
 
-                 // Get the Dependency Object using the dependency ID
+                    // Get the Dependency Object using the dependency ID
 
                 } else {
 
@@ -81,12 +81,13 @@
             });
         };
 
-        $scope.export = function(){
+        $scope.export = function () {
             if ($scope.export_format == 'csv') {
-                $scope.gridApi.exporter.csvExport( $scope.export_row_type, $scope.export_column_type);
+                $scope.gridApi.exporter.csvExport($scope.export_row_type, $scope.export_column_type);
             } else if ($scope.export_format == 'pdf') {
-                $scope.gridApi.exporter.pdfExport( $scope.export_row_type, $scope.export_column_type);
-            };
+                $scope.gridApi.exporter.pdfExport($scope.export_row_type, $scope.export_column_type);
+            }
+            ;
         };
     };
 

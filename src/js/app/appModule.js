@@ -5,7 +5,7 @@
 (function () {
 
     var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection',
-        'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule','ui.grid.exporter','ngAnimate', 'ngTouch']);
+        'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule', 'ui.grid.exporter', 'ngAnimate', 'ngTouch']);
 
 // Restangular Configuration
     app.config(function (RestangularProvider) {
@@ -71,7 +71,7 @@
             templateUrl: 'src/html/partials/issues.html',
             controller: 'issuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc, scanRestSvc, alertingSvc) {
+                issues: function (issuesRestSvc, scanSvc) {
 
                     return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
                 }
@@ -95,7 +95,12 @@
 
             url: '/trending',
             templateUrl: 'src/html/partials/trending.html',
-            controller: 'trendingCtrl'
+            controller: 'trendingCtrl',
+            resolve: {
+                scans: function (scanRestSvc, projectsSvc) {
+                    return scanRestSvc.getScans(projectsSvc.getCurrentProjectId());
+                }
+            }
 
         });
 

@@ -48,7 +48,8 @@
             <div class="col-lg-6">
                 <terians-panel title="Dependencies">
                     <div ng-controller="dependencyTableCtrl">
-                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection ui-grid-exporter></div>
+                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection
+                             ui-grid-exporter></div>
                         <div class="pull-right">
                             <label>Columns</label>
                             <select ng-model="export_column_type">
@@ -66,7 +67,7 @@
                                 <option value='csv'>CSV</option>
                                 <option value='pdf'>PDF</option>
                             </select>
-                            <button ng-click="export()" class="btn panel-blue" >Export</button>
+                            <button ng-click="export()" class="btn panel-blue">Export</button>
                         </div>
                     </div>
                 </terians-panel>
@@ -74,7 +75,8 @@
             <div class="col-lg-6">
                 <terians-panel title="Used In">
                     <div ng-controller="dependencyClassTableCtrl">
-                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection ui-grid-exporter></div>
+                        <div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection
+                             ui-grid-exporter></div>
                         <div class="pull-right">
                             <label>Columns</label>
                             <select ng-model="export_column_type">
@@ -92,7 +94,7 @@
                                 <option value='csv'>CSV</option>
                                 <option value='pdf'>PDF</option>
                             </select>
-                            <button ng-click="export()" class="btn panel-blue" >Export</button>
+                            <button ng-click="export()" class="btn panel-blue">Export</button>
                         </div>
                     </div>
                 </terians-panel>

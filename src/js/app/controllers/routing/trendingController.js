@@ -3,7 +3,9 @@
  */
 (function (module) {
 
-    var trendingCtrl = function ($scope, scanSvc, moment) {
+    var trendingCtrl = function ($scope, scanSvc, moment, scans) {
+
+        $scope.scans = scans;
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
         $scope.complexity = scanSvc.getCurrentScan().complexity;

@@ -3,7 +3,8 @@
  */
 (function (module) {
 
-    var signInCtrl = function ($scope, alertingSvc, $state, localStorageService, scanSvc, scanRestSvc) {
+    var signInCtrl = function ($scope, alertingSvc, $state, localStorageService,
+                               scanSvc, scanRestSvc, projectsRestSvc, projectsSvc) {
 
         $scope.signIn = function () {
 
@@ -14,9 +15,16 @@
 
                 scanRestSvc.getLastScan().then(function (scan) {
 
-                    scanSvc.setCurrentScan(scan);
-                    $state.go('dashboard.issues');
-                    alertingSvc.addSuccess("You are Signed In!!");
+                    projectsRestSvc.getProjectByScan(scan.teriansId).then(function (project) {
+
+                        scanSvc.setCurrentScan(scan);
+                        projectsSvc.setCurrentProjectId(project.teriansId)
+                        $state.go('dashboard.issues');
+                        alertingSvc.addSuccess("You are Signed In!!");
+
+                    }, function () {
+                        alertingSvc.addError("There was an error getting the last scan data");
+                    });
 
                 }, function () {
                     alertingSvc.addError("There was an error getting the last scan data");
