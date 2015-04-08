@@ -20,8 +20,10 @@
         RestangularProvider.addResponseInterceptor(function (data, operation) {
             var extractedData;
             if (operation === "getList") {
-                extractedData = data.data;
-                extractedData.meta = data.size;
+                if (Array.isArray(data.data)) {
+                    extractedData = data.data;
+                    extractedData.meta = data.size;
+                }
             } else {
                 extractedData = data;
             }

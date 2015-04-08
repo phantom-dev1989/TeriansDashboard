@@ -7,7 +7,15 @@
 
         $scope.scans = scans;
 
+        // Hide Graphs if no Data
+        if (scans.length != 0) {
+            $scope.isData = true;
+        }
+
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
+        $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
+        $scope.issueHighCount = scanSvc.getCurrentScan().issueHighCount;
+        $scope.issueMediumCount = scanSvc.getCurrentScan().issueMediumCount;
         $scope.complexity = scanSvc.getCurrentScan().complexity;
         $scope.techdebt = scanSvc.getCurrentScan().techdebt + "min";
         $scope.abstractness = scanSvc.getCurrentScan().abstractness;
@@ -20,13 +28,13 @@
 
         $scope.gridsterOpts = {
             margins: [10, 10],
-            columns: 4,
+            columns: 2,
             outerMargin: false,
             avoid_overlapped_widgets: true,
             pushing: false,
             floating: true,
             swapping: true,
-            max_cols: 2,
+            max_cols: 1,
             //maxRows: 2,
             colWidth: 'auto', // can be an integer or 'auto'.  'auto' uses the pixel width of the element divided by 'columns'
             rowHeight: '490', // can be an integer or 'match'.  Match uses the colWidth, giving you square widgets.

@@ -7,7 +7,15 @@
 
         $scope.issues = issues;
 
+        // Hide Graphs if no Data
+        if (issues.length != 0) {
+            $scope.isData = true;
+        }
+
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
+        $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
+        $scope.issueHighCount = scanSvc.getCurrentScan().issueHighCount;
+        $scope.issueMediumCount = scanSvc.getCurrentScan().issueMediumCount;
         $scope.complexity = scanSvc.getCurrentScan().complexity;
         $scope.techdebt = scanSvc.getCurrentScan().techdebt + "min";
         $scope.abstractness = scanSvc.getCurrentScan().abstractness;

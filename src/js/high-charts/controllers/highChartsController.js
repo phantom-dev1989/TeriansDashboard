@@ -108,7 +108,8 @@
         };
     });
 
-    app.controller('highChartsLineChartWithLabelsCtrl', function ($scope, $log) {
+    app.controller('highChartsLineChartWit' +
+    'hLabelsCtrl', function ($scope, $log) {
 
         // data here would come from web service
         $scope.subTitle = {

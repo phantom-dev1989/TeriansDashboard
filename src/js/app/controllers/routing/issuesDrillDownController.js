@@ -8,6 +8,9 @@
         $scope.issues = issues;
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
+        $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
+        $scope.issueHighCount = scanSvc.getCurrentScan().issueHighCount;
+        $scope.issueMediumCount = scanSvc.getCurrentScan().issueMediumCount;
         $scope.complexity = scanSvc.getCurrentScan().complexity;
         $scope.techdebt = scanSvc.getCurrentScan().techdebt + "min";
         $scope.abstractness = scanSvc.getCurrentScan().abstractness;
