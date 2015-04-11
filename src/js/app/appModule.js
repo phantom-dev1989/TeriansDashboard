@@ -4,13 +4,13 @@
 
 (function () {
 
-    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection',
+    var app = angular.module('app', ['ui.router', 'restangular', 'gridster', 'ui.ace', 'ui.select', 'ui.grid.selection', 'angularSpinner',
         'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule', 'ui.grid.exporter', 'ngAnimate', 'ngTouch']);
 
 // Restangular Configuration
     app.config(function (RestangularProvider) {
         // Note that we run everything on the localhost
-        RestangularProvider.setBaseUrl('http://localhost:8080/terians/api/v1');
+        RestangularProvider.setBaseUrl('http://10.16.255.159:8080/terians/api/v1');
     });
 
 // Extra data from Collections Nested in JSON
@@ -67,18 +67,18 @@
 
         });
 
-        $stateProvider.state('dashboard.issues', {
+        /*        $stateProvider.state('dashboard.issues', {
 
-            url: '/issue',
-            templateUrl: 'src/html/partials/issues.html',
-            controller: 'issuesCtrl',
-            resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+         url: '/issue',
+         templateUrl: 'src/html/partials/issues.html',
+         controller: 'issuesCtrl',
+         resolve: {
+         issues: function (issuesRestSvc, scanSvc) {
 
-                    return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
-                }
-            }
-        });
+         return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
+         }
+         }
+         });*/
 
         $stateProvider.state('dashboard.critical', {
 
@@ -118,7 +118,12 @@
 
             url: '/dependency',
             templateUrl: 'src/html/partials/dependencies.html',
-            controller: 'dependenciesCtrl'
+            controller: 'dependenciesCtrl',
+            resolve: {
+                dependencies: function (dependenciesRestSvc, scanSvc, projectsSvc) {
+                    return dependenciesRestSvc.getDependencies(projectsSvc.getCurrentProjectId(), scanSvc.getCurrentScan().teriansId);
+                }
+            }
 
         });
 
@@ -198,9 +203,21 @@
 
     });
 
-    app.run(['$state', '$stateParams',
-        function ($state, $stateParams) {
-            //this solves page refresh and getting back to state
-        }]);
+    app.run(function ($rootScope, usSpinnerService) {
+
+        $rootScope
+            .$on('$stateChangeStart',
+            function (event, toState, toParams, fromState, fromParams) {
+                console.log("State Change Started");
+                usSpinnerService.spin('spinner-1');
+            });
+
+        $rootScope
+            .$on('$stateChangeSuccess',
+            function (event, toState, toParams, fromState, fromParams) {
+                console.log("State Change Success");
+                usSpinnerService.stop('spinner-1');
+            });
+    });
 
 }());

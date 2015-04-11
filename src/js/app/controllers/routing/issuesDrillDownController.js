@@ -19,7 +19,7 @@
         $scope.clazzCount = scanSvc.getCurrentScan().clazzCount;
         $scope.methodCount = scanSvc.getCurrentScan().methodCount;
         $scope.scanned = moment(scanSvc.getCurrentScan().date).format('MM-DD-YYYY hh:mm A');
-        //$scope.loc = scanSvc.getCurrentScan().loc;
+        $scope.loc = scanSvc.getCurrentScan().loc;
 
         $scope.gridsterOpts = {
             margins: [10, 10],

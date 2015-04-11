@@ -16,7 +16,7 @@
                 scanRestSvc.getLastScan().then(function (scan) {
 
                     scanSvc.setCurrentScan(scan);
-                    $state.go('dashboard.issues');
+                    $state.go('dashboard.critical');
                     alertingSvc.addSuccess("You are Signed In!!");
 
                 }, function () {

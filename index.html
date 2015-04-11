@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="lib/angular-gridster/dist/angular-gridster.min.css" />
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="lib/animate-css/animate.css" />
+    <link rel="stylesheet" href="lib/spin/stylesheets/jquery.spin.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -48,7 +49,6 @@
 <script src="lib/lodash/lodash.js"></script>
 <script src="lib/restangular/dist/restangular.js"></script>
 <script src="lib/toastr/toastr.js"></script>
-<script src="lib/is-loading/jquery.isloading.js"></script>
 <script src="lib/highcharts/highcharts.js"></script>
 <script src="lib/highcharts/highcharts-more.js"></script>
 <script src="lib/highcharts/modules/exporting.js"></script>
@@ -69,6 +69,9 @@
 <script src="lib/pdfmake/build/pdfmake.js"></script>
 <script src="lib/angular-animate/angular-animate.js"></script>
 <script src="lib/angular-touch/angular-touch.js"></script>
+<script src="lib/spin/javascripts/jquery.spin.js"></script>
+<script src="lib/spin.js/spin.js"></script>
+<script src="lib/angular-spinner/angular-spinner.js"></script>
 <!-- endbower -->
 
 <!-- manual -->
@@ -84,28 +87,30 @@
 <!-- inject:js -->
 <script src="src/js/app/appModule.js"></script>
 <script src="src/js/app/controllers/appController.js"></script>
+<script src="src/js/app/services/constantsService.js"></script>
+<script src="src/js/app/services/globalsService.js"></script>
 <script src="src/js/app/directives/blueThumbnailDirective.js"></script>
 <script src="src/js/app/directives/logoDirective.js"></script>
 <script src="src/js/app/directives/navBarDirective.js"></script>
 <script src="src/js/app/directives/panelDirective.js"></script>
 <script src="src/js/app/directives/thumbnailLogoDirective.js"></script>
-<script src="src/js/app/services/constantsService.js"></script>
-<script src="src/js/app/services/globalsService.js"></script>
 <script src="src/js/architecture/services/architectureRestService.js"></script>
 <script src="src/js/architecture/services/architectureService.js"></script>
+<script src="src/js/dependency/controllers/dependencyAceController.js"></script>
+<script src="src/js/dependency/controllers/dependencyCVEUIGridController.js"></script>
+<script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
+<script src="src/js/dependency/controllers/dependencyIssuesUIGridController.js"></script>
+<script src="src/js/dependency/controllers/dependencyController.js"></script>
 <script src="src/js/authentication/services/addTokenService.js"></script>
 <script src="src/js/authentication/services/currentUserService.js"></script>
 <script src="src/js/authentication/services/formEncodeService.js"></script>
 <script src="src/js/authentication/services/localStorageService.js"></script>
 <script src="src/js/authentication/services/loginRedirectService.js"></script>
 <script src="src/js/authentication/services/oauthService.js"></script>
-<script src="src/js/dependency/controllers/dependenciesAceController.js"></script>
-<script src="src/js/dependency/controllers/dependencyClassUIGridController.js"></script>
-<script src="src/js/dependency/controllers/dependencyTableUIGridController.js"></script>
-<script src="src/js/diagnostics/services/alertingService.js"></script>
-<script src="src/js/diagnostics/services/spinnerService.js"></script>
 <script src="src/js/dependency/services/dependencyRestService.js"></script>
 <script src="src/js/dependency/services/dependencyService.js"></script>
+<script src="src/js/diagnostics/services/alertingService.js"></script>
+<script src="src/js/diagnostics/services/spinnerService.js"></script>
 <script src="src/js/high-charts/controllers/highChartsController.js"></script>
 <script src="src/js/high-charts/service/highChartsResizeService.js"></script>
 <script src="src/js/high-charts/directives/highChartsAreaNegativeDirective.js"></script>
@@ -132,6 +137,11 @@
 <script src="src/js/issue/services/issueRestService.js"></script>
 <script src="src/js/issue/services/issueService.js"></script>
 <script src="src/js/issue/services/issuesChartService.js"></script>
+<script src="src/js/joint-js/controllers/jointJsController.js"></script>
+<script src="src/js/joint-js/directives/jointJsUmlClassDiagramDirective.js"></script>
+<script src="src/js/project/services/projectLodashService.js"></script>
+<script src="src/js/project/services/projectRestService.js"></script>
+<script src="src/js/project/services/projectService.js"></script>
 <script src="src/js/issue/controllers/issuesAceCtrl.js"></script>
 <script src="src/js/issue/controllers/issuesBestPracticesCategoryBarChart.js"></script>
 <script src="src/js/issue/controllers/issuesBestPracticesClassesBarChart.js"></script>
@@ -164,11 +174,6 @@
 <script src="src/js/issue/controllers/issuesMediumPieChart.js"></script>
 <script src="src/js/issue/controllers/issuesPackagesBarChart.js"></script>
 <script src="src/js/issue/controllers/issuesPieChart.js"></script>
-<script src="src/js/joint-js/controllers/jointJsController.js"></script>
-<script src="src/js/joint-js/directives/jointJsUmlClassDiagramDirective.js"></script>
-<script src="src/js/project/services/projectLodashService.js"></script>
-<script src="src/js/project/services/projectRestService.js"></script>
-<script src="src/js/project/services/projectService.js"></script>
 <script src="src/js/scan/services/scanLodashService.js"></script>
 <script src="src/js/scan/services/scanRestService.js"></script>
 <script src="src/js/scan/services/scanService.js"></script>

@@ -19,7 +19,7 @@
 
                         scanSvc.setCurrentScan(scan);
                         projectsSvc.setCurrentProjectId(project.teriansId)
-                        $state.go('dashboard.issues');
+                        $state.go('dashboard.critical');
                         alertingSvc.addSuccess("You are Signed In!!");
 
                     }, function () {
