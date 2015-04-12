@@ -58,7 +58,7 @@
                 <ul>
                     <div gridster-item>
                         <terians-panel title="Top Low Issues">
-                            <div ng-controller="issuesLowPieChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesLowPieChartCtrl">
                                 <terians-high-charts-pie-legend ng-hide="!isData" data="data" title="title"
                                                                 htooltip="tooltip"></terians-high-charts-pie-legend>
                                 <h1 class="text-center" ng-hide="isData">No Data</h1>
@@ -67,7 +67,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poorest Quality Packages">
-                            <div ng-controller="issuesLowPackagesBarChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesLowPackagesBarChartCtrl">
                                 <terians-high-charts-bar-stacked ng-hide="!isData" title="title" data="data"
                                                                  xaxis="xAxis"
                                                                  yaxis="yAxis"></terians-high-charts-bar-stacked>
@@ -77,7 +77,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poorest Quality Classes">
-                            <div ng-controller="issuesLowClassesBarChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesLowClassesBarChartCtrl">
                                 <terians-high-charts-column-stacked ng-hide="!isData" data="data" title="title"
                                                                     xaxis="xAxis"
                                                                     yaxis="yAxis"
@@ -98,7 +98,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poor Quality Files">
-                            <div ng-controller="issuesLowFilesTreeMapCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesLowFilesTreeMapCtrl">
                                 <terians-high-charts-tree-map ng-hide="!isData" data="data"
                                                               title="title"></terians-high-charts-tree-map>
                                 <h1 class="text-center" ng-hide="isData">No Data</h1>

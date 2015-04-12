@@ -67,19 +67,6 @@
 
         });
 
-        /*        $stateProvider.state('dashboard.issues', {
-
-         url: '/issue',
-         templateUrl: 'src/html/partials/issues.html',
-         controller: 'issuesCtrl',
-         resolve: {
-         issues: function (issuesRestSvc, scanSvc) {
-
-         return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
-         }
-         }
-         });*/
-
         $stateProvider.state('dashboard.critical', {
 
             url: '/critical',

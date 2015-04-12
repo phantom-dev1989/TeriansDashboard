@@ -18,7 +18,8 @@
                     projectsRestSvc.getProjectByScan(scan.teriansId).then(function (project) {
 
                         scanSvc.setCurrentScan(scan);
-                        projectsSvc.setCurrentProjectId(project.teriansId)
+                        projectsSvc.setCurrentProjectName(project.name);
+                        projectsSvc.setCurrentProjectId(project.teriansId);
                         $state.go('dashboard.critical');
                         alertingSvc.addSuccess("You are Signed In!!");
 

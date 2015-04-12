@@ -11,6 +11,9 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
+        <button type="button" class="btn btn-default" ng-disabled="true">
+            {{projectName}}
+        </button>
         <!-- Single button -->
         <div class="btn-group" dropdown is-open="status.isopen">
             <button type="button" class="btn btn-default dropdown-toggle" dropdown-toggle ng-disabled="disabled">
@@ -22,21 +25,18 @@
                 <li><a href="#" ng-click="openProjectModal()">All Projects</a></li>
             </ul>
         </div>
+        <button type="button" class="btn btn-default" ng-click="signOut()">
+            Sign Out
+        </button>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-default navbar-nav side-nav">
-            <!--  <li>
-                  <a ui-sref="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-              </li> -->
             <li>
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i
                         class="fa fa-fw fa-arrows-v"></i>
                     Issues <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
-                    <!-- <li>
-                         <a ui-sref="dashboard.issues">All</a>
-                     </li>-->
                     <li>
                         <a ui-sref="dashboard.critical">Critical</a>
                     </li>

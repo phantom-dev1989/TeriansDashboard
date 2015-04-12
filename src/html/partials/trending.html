@@ -57,7 +57,7 @@
             <div gridster="gridsterOpts">
                 <ul>
                     <div gridster-item>
-                        <terians-panel title="Issue Severity Count By Scan" icon="fa fa-bar-chart-o fa-fw">
+                        <terians-panel title="Issue Severity Count By Scan">
                             <div ng-controller="trendingSeverityAreaSplineCtrl">
                                 <terians-high-charts-basic-area-spline ng-hide="!isData" data="data"
                                                                        title="title" xaxis="xAxis" yaxis="yAxis"
@@ -67,7 +67,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Technical Debt by Scan" icon="fa fa-bar-chart-o fa-fw">
+                        <terians-panel title="Technical Debt by Scan">
                             <div ng-controller="trendingTechDebtLineChart">
                                 <terians-high-charts-line-chart-with-labels ng-hide="!isData" title="title"
                                                                             subTitle="subTitle"
@@ -79,7 +79,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Trending Metrics By Scan" icon="fa fa-bar-chart-o fa-fw">
+                        <terians-panel title="Trending Metrics By Scan">
                             <div ng-controller="trendingMetricLineChart">
                                 <terians-high-charts-line-chart-basic ng-hide="!isData" title="title"
                                                                       subTitle="subTitle"
@@ -90,7 +90,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Issue Severity Percentage By Scan" icon="fa fa-bar-chart-o fa-fw">
+                        <terians-panel title="Issue Severity Percentage By Scan">
                             <div ng-controller="trendingSeverityAreaPercentageCtrl">
                                 <terians-high-charts-basic-area-percentage ng-hide="!isData" data="data" title="title"
                                                                            subTitle="subTitle" xaxis="xAxis"

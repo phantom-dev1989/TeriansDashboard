@@ -59,7 +59,7 @@
                 <ul>
                     <div gridster-item>
                         <terians-panel title="Top Best Practices Issues">
-                            <div ng-controller="issuesBestPracticesPieChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesBestPracticesPieChartCtrl">
                                 <terians-high-charts-pie-legend ng-hide="!isData" data="data" title="title"
                                                                 htooltip="tooltip"></terians-high-charts-pie-legend>
                                 <h1 class="text-center" ng-hide="isData">No Data</h1>
@@ -68,7 +68,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poorest Quality Packages">
-                            <div ng-controller="issuesBestPracticesPackagesBarChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesBestPracticesPackagesBarChartCtrl">
                                 <terians-high-charts-bar-stacked ng-hide="!isData" title="title" data="data"
                                                                  xaxis="xAxis"
                                                                  yaxis="yAxis"></terians-high-charts-bar-stacked>
@@ -78,7 +78,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poorest Quality Classes">
-                            <div ng-controller="issuesBestPracticesClassesBarChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesBestPracticesClassesBarChartCtrl">
                                 <terians-high-charts-column-stacked ng-hide="!isData" data="data" title="title"
                                                                     xaxis="xAxis"
                                                                     yaxis="yAxis"
@@ -89,7 +89,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Issue Categories">
-                            <div ng-controller="issuesBestPracticesCategoryBarChartCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesBestPracticesCategoryBarChartCtrl">
                                 <terians-high-charts-basic-column ng-hide="!isData" data="data" title="title"
                                                                   subTitle="subTitle" xaxis="xAxis" yaxis="yAxis"
                                                                   htooltip="tooltip"></terians-high-charts-basic-column>
@@ -99,7 +99,7 @@
                     </div>
                     <div gridster-item>
                         <terians-panel title="Top Poor Quality Files">
-                            <div ng-controller="issuesBestPracticesFilesTreeMapCtrl" icon="fa fa-bar-chart-o fa-fw">
+                            <div ng-controller="issuesBestPracticesFilesTreeMapCtrl">
                                 <terians-high-charts-tree-map ng-hide="!isData" data="data"
                                                               title="title"></terians-high-charts-tree-map>
                                 <h1 class="text-center" ng-hide="isData">No Data</h1>

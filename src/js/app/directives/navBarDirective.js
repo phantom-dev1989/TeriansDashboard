@@ -8,6 +8,13 @@
             templateUrl: 'src/html/partials/directives/teriansNavBar.html',
             controller: function ($scope, projectsSvc, scanSvc, projectsRestSvc, $modal, alertingSvc, $state) {
 
+                $scope.projectName = projectsSvc.getCurrentProjectName().replace(/_/g," ");
+
+                $scope.signOut = function(){
+                    // clear token data of the user
+                    $state.go('signin');
+                }
+
                 projectsRestSvc.getProjects().then(function (projects) {
                     projectsSvc.setCurrentProjects(projects);
                     $scope.projects = _.slice(projects, 0, 5);
@@ -57,6 +64,7 @@
 
                                     if (row.isSelected) {
                                         var currentProjectIdSelected = projectsLodashSvc.getProjectId(row.entity.name);
+                                        projectsSvc.setCurrentProjectName(row.entity.name);
                                         projectsSvc.setCurrentProjectId(currentProjectIdSelected);
                                         scanRestSvc.getScans(currentProjectIdSelected).then(function (scans) {
                                             scanSvc.setCurrentScans(scans);
