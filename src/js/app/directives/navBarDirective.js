@@ -27,7 +27,7 @@
                     var modalInstance = $modal.open({
                         templateUrl: 'src/html/partials/projectsModal.html',
                         size: 'lg',
-                        controller: function ($scope, $modalInstance, projectsLodashSvc, scanLodashSvc, scanRestSvc) {
+                        controller: function ($scope, $modalInstance, projectsDataSvc, scanDataSvc, scanRestSvc) {
 
                             $scope.currentScans = [];
                             $scope.isOkDisabled = true;
@@ -51,29 +51,31 @@
                                 multiSelect: false,
                                 exporterMenuCsv: false,
                                 enableGridMenu: false,
-                                minRowsToShow: projectsSvc.getCurrentProjects().length,
                                 columnDefs: [
                                     {field: 'name', enableSorting: false, enableColumnMenu: false}
                                 ],
-                                data: projectsLodashSvc.getProjectNames()
+                                data: projectsDataSvc.getProjectNames()
                             };
+
+                            // Empty Current scans to show empty rows (hack)
+                            $scope.currentScans = scanDataSvc.getScanDateAndVersionsEmpty();
 
                             $scope.gridOptionsProject.onRegisterApi = function (gridApi) {
                                 $scope.gridApi = gridApi;
                                 gridApi.selection.on.rowSelectionChanged($scope, function (row) {
 
                                     if (row.isSelected) {
-                                        var currentProjectIdSelected = projectsLodashSvc.getProjectId(row.entity.name);
+                                        var currentProjectIdSelected = projectsDataSvc.getProjectId(row.entity.name);
                                         projectsSvc.setCurrentProjectName(row.entity.name);
                                         projectsSvc.setCurrentProjectId(currentProjectIdSelected);
                                         scanRestSvc.getScans(currentProjectIdSelected).then(function (scans) {
                                             scanSvc.setCurrentScans(scans);
-                                            $scope.currentScans = scanLodashSvc.getScanDateAndVersions(scans);
+                                            $scope.currentScans = scanDataSvc.getScanDateAndVersions(scans);
                                         }, function () {
                                             alertingSvc.addError("There was an error getting Project Scans data");
                                         });
                                     } else {
-                                        $scope.currentScans = [];
+                                        $scope.currentScans = scanDataSvc.getScanDateAndVersionsEmpty();
                                     }
 
                                 });
@@ -89,7 +91,6 @@
                                 multiSelect: false,
                                 exporterMenuCsv: false,
                                 enableGridMenu: false,
-                                minRowsToShow: 'currentScans.length',
                                 columnDefs: [
                                     {field: 'date', enableSorting: false, enableColumnMenu: false},
                                     {field: 'projectVersion', enableSorting: false, enableColumnMenu: false},
