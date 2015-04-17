@@ -44,7 +44,7 @@
                             $scope.gridOptionsProject = {
                                 enableSorting: false,
                                 enableFiltering: false,
-                                showGridFooter: true,
+                                showGridFooter: false,
                                 showColumnFooter: false,
                                 enableRowSelection: true,
                                 enableSelectAll: false,
@@ -84,7 +84,7 @@
                             $scope.gridOptionsScan = {
                                 enableSorting: false,
                                 enableFiltering: false,
-                                showGridFooter: true,
+                                showGridFooter: false,
                                 showColumnFooter: false,
                                 enableRowSelection: true,
                                 enableSelectAll: false,

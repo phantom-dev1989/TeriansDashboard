@@ -32,12 +32,21 @@
                     tooltip: tooltip,
                     plotOptions: {
                         pie: {
-                            allowPointSelect: true,
+                            allowPointSelect: false,
                             cursor: 'pointer',
                             dataLabels: {
                                 enabled: false
                             },
                             showInLegend: true
+                        },
+                        series: {
+                            point: {
+                                events: {
+                                    legendItemClick: function () {
+                                        return false; // <== returning false will cancel the default action
+                                    }
+                                }
+                            }
                         }
                     },
                     series: data

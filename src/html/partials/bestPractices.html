@@ -17,7 +17,7 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-2 col-md-3">
-                <terians-blue-thumbnail text-large={{issueCount}} text-small="Issues"/>
+                <terians-blue-thumbnail text-large={{issueCount}} text-small="Total Issues"/>
             </div>
             <div class="col-lg-2 col-md-3">
                 <terians-blue-thumbnail text-large={{issueCriticalCount}} text-small="Critical Issues"/>
@@ -58,7 +58,7 @@
             <div gridster="gridsterOpts">
                 <ul>
                     <div gridster-item>
-                        <terians-panel title="Top Best Practices Issues">
+                        <terians-panel title="Top 6 Best Practices Issues">
                             <div ng-controller="issuesBestPracticesPieChartCtrl">
                                 <terians-high-charts-pie-legend ng-hide="!isData" data="data" title="title"
                                                                 htooltip="tooltip"></terians-high-charts-pie-legend>
@@ -67,7 +67,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Top Poorest Quality Packages">
+                        <terians-panel title="Top Vulnerable Packages">
                             <div ng-controller="issuesBestPracticesPackagesBarChartCtrl">
                                 <terians-high-charts-bar-stacked ng-hide="!isData" title="title" data="data"
                                                                  xaxis="xAxis"
@@ -77,7 +77,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Top Poorest Quality Classes">
+                        <terians-panel title="Top Vulnerable Classes">
                             <div ng-controller="issuesBestPracticesClassesBarChartCtrl">
                                 <terians-high-charts-column-stacked ng-hide="!isData" data="data" title="title"
                                                                     xaxis="xAxis"
@@ -98,7 +98,7 @@
                         </terians-panel>
                     </div>
                     <div gridster-item>
-                        <terians-panel title="Top Poor Quality Files">
+                        <terians-panel title="Top Vulnerable Files">
                             <div ng-controller="issuesBestPracticesFilesTreeMapCtrl">
                                 <terians-high-charts-tree-map ng-hide="!isData" data="data"
                                                               title="title"></terians-high-charts-tree-map>
