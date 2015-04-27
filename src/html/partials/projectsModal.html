@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h3 class="modal-title">Projects</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-6">
+            <terians-panel title="Projects">
+                <div ui-grid="gridOptionsProject" class="grid" ui-grid-auto-resize ui-grid-selection></div>
+            </terians-panel>
+        </div>
+        <div class="col-lg-6">
+            <terians-panel title="Scans">
+                <div ui-grid="gridOptionsScan" class="grid" ui-grid-auto-resize ui-grid-selection></div>
+            </terians-panel>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-info" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-success" ng-click="ok()" ng-disabled="isOkDisabled">Choose</button>
+</div>
