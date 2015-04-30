@@ -1,8 +1,17 @@
 (function (module) {
 
-    var projectsDataSvc = function (projectsSvc) {
+    module.factory("projectsDataSvc", projectsDataSvc);
 
-        var getProjectNames = function () {
+    projectsDataSvc.$inject =['projectsSvc'];
+
+    function projectsDataSvc(projectsSvc) {
+
+        return {
+            getProjectNames: getProjectNames,
+            getProjectId: getProjectId
+        };
+
+        function getProjectNames() {
 
             var projectNames = [];
             var currentProjects = projectsSvc.getCurrentProjects();
@@ -18,7 +27,7 @@
             return projectNames;
         };
 
-        var getProjectId = function (name) {
+        function getProjectId(name) {
 
             var currentProjects = projectsSvc.getCurrentProjects();
             var projectId = _.result(_.find(currentProjects, function (project) {
@@ -28,12 +37,7 @@
             return projectId;
         };
 
-        return {
-            getProjectNames: getProjectNames,
-            getProjectId: getProjectId
-        };
-    };
 
-    module.factory("projectsDataSvc", projectsDataSvc);
+    };
 
 }(angular.module("app")));

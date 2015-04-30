@@ -3,9 +3,22 @@
  */
 (function (module) {
 
-    var dependencyDataSvc = function () {
+    module.factory("dependencyDataSvc", dependencyDataSvc);
 
-        var getDependencyData = function (dependencies) {
+    function dependencyDataSvc() {
+
+        return {
+            getIssuesData: getIssuesData,
+            getIssuesDataEmpty: getIssuesDataEmpty,
+            getClassesData: getClassesData,
+            getClassesDataEmpty: getClassesDataEmpty,
+            getCVEData: getCVEData,
+            getCVEDataEmpty: getCVEDataEmpty,
+            getDependencyData: getDependencyData
+
+        };
+
+        function getDependencyData(dependencies) {
 
             var dependencyData = [];
             for (var i = 0; i < dependencies.length; i++) {
@@ -29,7 +42,7 @@
                 return dependencyData;
         };
 
-        var getIssuesData = function (issues) {
+        function getIssuesData(issues) {
 
             var issueData = [];
             for (var i = 0; i < issues.length; i++) {
@@ -58,7 +71,7 @@
             return issueData;
         };
 
-        var getIssuesDataEmpty = function () {
+        function getIssuesDataEmpty() {
 
             var issueData = [];
             for (var i = 0; i < 9; i++) {
@@ -74,7 +87,7 @@
             return issueData;
         };
 
-        var getClassesData = function (classes) {
+        function getClassesData(classes) {
 
             var classData = [];
             var srcData = [];
@@ -106,7 +119,7 @@
 
         };
 
-        var getClassesDataEmpty = function () {
+        function getClassesDataEmpty() {
 
             var classData = [];
             // Push empty rows
@@ -119,7 +132,7 @@
             return classData;
         };
 
-        var getCVEData = function (vulnerabilities) {
+        function getCVEData(vulnerabilities) {
 
             var vulnerabilityData = [];
             for (var i = 0; i < vulnerabilities.length; i++) {
@@ -147,7 +160,7 @@
 
         };
 
-        var getCVEDataEmpty = function () {
+        function getCVEDataEmpty() {
 
             var vulnerabilityData = [];
             for (var i = 0; i < 9; i++) {
@@ -163,20 +176,6 @@
             return vulnerabilityData;
 
         };
-
-
-        return {
-            getIssuesData: getIssuesData,
-            getIssuesDataEmpty: getIssuesDataEmpty,
-            getClassesData: getClassesData,
-            getClassesDataEmpty: getClassesDataEmpty,
-            getCVEData: getCVEData,
-            getCVEDataEmpty: getCVEDataEmpty,
-            getDependencyData: getDependencyData
-
-        };
     };
-
-    module.factory("dependencyDataSvc", dependencyDataSvc);
 
 }(angular.module("app")));

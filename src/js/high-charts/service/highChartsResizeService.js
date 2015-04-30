@@ -1,7 +1,8 @@
 (function (module) {
 
-    var highChartsResizeSvc = function () {
+    module.factory("highChartsResizeSvc", highChartsResizeSvc);
 
+    function highChartsResizeSvc() {
         var chartEvents = {
             load: function () {
                 // just calling this.reflow() here does not work
@@ -13,11 +14,10 @@
                 }, 0);
             }
         };
-
         return {
             chartEvents: chartEvents
         };
+
     };
-    module.factory("highChartsResizeSvc", highChartsResizeSvc);
 
 }(angular.module("app")));

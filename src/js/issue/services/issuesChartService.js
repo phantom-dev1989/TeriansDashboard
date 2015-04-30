@@ -3,9 +3,19 @@
  */
 (function (module) {
 
-    var issuesChartSvc = function () {
+    module.factory("issuesChartSvc", issuesChartSvc);
 
-        var transformforPIEChart = function (issues) {
+    function issuesChartSvc() {
+
+        return {
+            transformforPIEChart: transformforPIEChart,
+            transformforStackedBarChart: transformforStackedBarChart,
+            transformforColumnStackedChart: transformforColumnStackedChart,
+            transformforBasicColumnChart: transformforBasicColumnChart,
+            transformforTreeMap: transformforTreeMap
+        };
+
+        function transformforPIEChart(issues) {
 
             var tempIssues = []
             for (var i = 0; i < issues.length; i++) {
@@ -26,7 +36,7 @@
             return sortedData.slice(0, 6);
         }
 
-        var transformforStackedBarChart = function (issues) {
+        function transformforStackedBarChart(issues) {
 
             var tempIssues = []
             for (var i = 0; i < issues.length; i++) {
@@ -46,7 +56,7 @@
             return sortedData.slice(0, 6);
         }
 
-        var transformforColumnStackedChart = function (issues) {
+        function transformforColumnStackedChart(issues) {
 
             var tempIssues = []
             for (var i = 0; i < issues.length; i++) {
@@ -66,7 +76,7 @@
             return sortedData.slice(0, 6);
         }
 
-        var transformforBasicColumnChart = function (issues) {
+        function transformforBasicColumnChart(issues) {
 
             var tempIssues = []
             for (var i = 0; i < issues.length; i++) {
@@ -88,7 +98,7 @@
             return sortedData.slice(0, 10);
         }
 
-        var transformforTreeMap = function (issues) {
+        function transformforTreeMap(issues) {
 
             var tempIssues = []
             for (var i = 0; i < issues.length; i++) {
@@ -107,17 +117,6 @@
             });
             return sortedData;
         }
-
-
-        return {
-            transformforPIEChart: transformforPIEChart,
-            transformforStackedBarChart: transformforStackedBarChart,
-            transformforColumnStackedChart: transformforColumnStackedChart,
-            transformforBasicColumnChart: transformforBasicColumnChart,
-            transformforTreeMap: transformforTreeMap
-        };
     };
-
-    module.factory("issuesChartSvc", issuesChartSvc);
 
 }(angular.module("app")));

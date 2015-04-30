@@ -1,46 +1,10 @@
 (function (module) {
 
-    var dependenciesRestSvc = function (Restangular) {
+    module.factory("dependenciesRestSvc", dependenciesRestSvc);
 
-        var getDependencies = function (projectId, scanId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).getList('dependencies');
-        };
+    dependenciesRestSvc.$inject =['Restangular'];
 
-        var getDependency = function (projectId, scanId, dependencyId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).get();
-        };
-
-        var getVulnerabilities = function (projectId, scanId, dependencyId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('vulnerabilities');
-        };
-
-        var getVulnerability = function (projectId, scanId, dependencyId, vulnerabilityId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('vulnerabilities', vulnerabilityId).get();
-        };
-
-        var getMethods = function (projectId, scanId, dependencyId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('methods');
-        };
-
-        var getMethod = function (projectId, scanId, dependencyId, methodId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('methods', methodId).get();
-        };
-
-        var getClazzes = function (projectId, scanId, dependencyId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('clazzes');
-        };
-
-        var getClazz = function (projectId, scanId, dependencyId, clazzId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('clazzes', clazzId).get();
-        };
-
-        var getIssues = function (projectId, scanId, dependencyId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('issues');
-        };
-
-        var getIssue = function (projectId, scanId, dependencyId, issueId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('issues', issueId).get();
-        };
+    function dependenciesRestSvc(Restangular) {
 
         return {
             getDependencies: getDependencies,
@@ -54,8 +18,46 @@
             getIssues: getIssues,
             getIssue: getIssue
         };
-    };
 
-    module.factory("dependenciesRestSvc", dependenciesRestSvc);
+        function getDependencies(projectId, scanId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).getList('dependencies');
+        };
+
+        function getDependency(projectId, scanId, dependencyId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).get();
+        };
+
+        function getVulnerabilities(projectId, scanId, dependencyId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('vulnerabilities');
+        };
+
+        function getVulnerability(projectId, scanId, dependencyId, vulnerabilityId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('vulnerabilities', vulnerabilityId).get();
+        };
+
+        function getMethods(projectId, scanId, dependencyId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('methods');
+        };
+
+        function getMethod(projectId, scanId, dependencyId, methodId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('methods', methodId).get();
+        };
+
+        function getClazzes(projectId, scanId, dependencyId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('clazzes');
+        };
+
+        function getClazz(projectId, scanId, dependencyId, clazzId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('clazzes', clazzId).get();
+        };
+
+        function getIssues(projectId, scanId, dependencyId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).getList('issues');
+        };
+
+        function getIssue(projectId, scanId, dependencyId, issueId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('dependencies', dependencyId).one('issues', issueId).get();
+        };
+    };
 
 }(angular.module("app")));

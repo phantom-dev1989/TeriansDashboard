@@ -1,23 +1,10 @@
 (function (module) {
 
-    var scanRestSvc = function (Restangular) {
+    module.factory("scanRestSvc", scanRestSvc);
 
-        var getScans = function (projectId) {
-            return Restangular.one('projects', projectId).getList('scans');
-        };
+    scanRestSvc.$inject =['Restangular'];
 
-        var getScan = function (projectId, scanId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).get();
-        };
-
-        var getFirstScan = function () {
-            return Restangular.all('scans').getList({scanned: 'first'});
-        };
-
-        var getLastScan = function () {
-            return Restangular.one('scans', 'date').get({scanned: 'last'});
-        };
-
+    function scanRestSvc(Restangular) {
 
         return {
             getScans: getScans,
@@ -25,8 +12,22 @@
             getFirstScan: getFirstScan,
             getLastScan: getLastScan
         };
-    };
 
-    module.factory("scanRestSvc", scanRestSvc);
+        function getScans(projectId) {
+            return Restangular.one('projects', projectId).getList('scans');
+        };
+
+        function getScan(projectId, scanId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).get();
+        };
+
+        function getFirstScan() {
+            return Restangular.all('scans').getList({scanned: 'first'});
+        };
+
+        function getLastScan() {
+            return Restangular.one('scans', 'date').get({scanned: 'last'});
+        };
+    };
 
 }(angular.module("app")));

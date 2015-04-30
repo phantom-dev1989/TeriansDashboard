@@ -1,34 +1,10 @@
 (function (module) {
 
-    var issuesRestSvc = function (Restangular) {
+    module.factory("issuesRestSvc", issuesRestSvc);
 
-        var getIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues');
-        };
+    issuesRestSvc.$inject =['Restangular'];
 
-        var getIssue = function (projectId, scanId, issueId) {
-            return Restangular.one('projects', projectId).one('scans', scanId).one('issues', issueId);
-        };
-
-        var getCriticalIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues', {severity: 'critical'});
-        };
-
-        var getHighIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues', {severity: 'high'});
-        };
-
-        var getMediumIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues', {severity: 'medium'});
-        };
-
-        var getLowIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues', {severity: 'low'});
-        };
-
-        var getBestPracticesIssues = function (scanId) {
-            return Restangular.one('scans', scanId).getList('issues', {severity: 'bestpractices'});
-        };
+    function issuesRestSvc(Restangular) {
 
         return {
             getIssues: getIssues,
@@ -39,8 +15,35 @@
             getLowIssues: getLowIssues,
             getBestPracticesIssues: getBestPracticesIssues
         };
-    };
 
-    module.factory("issuesRestSvc", issuesRestSvc);
+        function getIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues');
+        };
+
+        function getIssue(projectId, scanId, issueId) {
+            return Restangular.one('projects', projectId).one('scans', scanId).one('issues', issueId);
+        };
+
+        function getCriticalIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues', {severity: 'critical'});
+        };
+
+        function getHighIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues', {severity: 'high'});
+        };
+
+        function getMediumIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues', {severity: 'medium'});
+        };
+
+        function getLowIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues', {severity: 'low'});
+        };
+
+        function getBestPracticesIssues(scanId) {
+            return Restangular.one('scans', scanId).getList('issues', {severity: 'bestpractices'});
+        };
+
+    };
 
 }(angular.module("app")));

@@ -1,8 +1,16 @@
 (function (module) {
 
-    var oauthSvc = function ($http, formEncode, currentUser) {
+    module.factory("oauthSvc", oauthSvc);
 
-        var login = function (username, password) {
+    oauthSvc.$inject =['$http','formEncode','currentUserSvc'];
+
+    function oauthSvc($http, formEncode, currentUserSvc) {
+
+        return {
+            login: login
+        };
+
+        function login(username, password) {
 
             var config = {
                 headers: {
@@ -18,15 +26,10 @@
 
             return $http.post("/login", data, config)
                 .then(function (response) {
-                    currentUser.setProfile(username, response.data.access_token);
+                    currentUserSvc.setProfile(username, response.data.access_token);
                     return username;
                 });
         };
-        return {
-            login: login
-        };
     };
-
-    module.factory("oauthSvc", oauthSvc);
 
 }(angular.module("app")));

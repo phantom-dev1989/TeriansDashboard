@@ -1,31 +1,10 @@
 (function (module) {
 
-    var projectsSvc = function (localStorageService) {
+    module.factory("projectsSvc", projectsSvc);
 
+    projectsSvc.$inject =['localStorageService'];
 
-        var getCurrentProjects = function () {
-            return localStorageService.get("currentProjects");
-        };
-
-        var setCurrentProjects = function (currentProjects) {
-            localStorageService.set("currentProjects", currentProjects);
-        };
-
-        var getCurrentProjectId = function () {
-            return localStorageService.get("currentProjectId");
-        };
-
-        var setCurrentProjectId = function (currentProjectId) {
-            localStorageService.set("currentProjectId", currentProjectId);
-        };
-
-        var getCurrentProjectName = function () {
-            return localStorageService.get("currentProjectName");
-        };
-
-        var setCurrentProjectName = function (currentProject) {
-            localStorageService.set("currentProjectName", currentProject);
-        };
+    function projectsSvc(localStorageService) {
 
         return {
             getCurrentProjects: getCurrentProjects,
@@ -34,10 +13,31 @@
             setCurrentProjectId: setCurrentProjectId,
             getCurrentProjectName: getCurrentProjectName,
             setCurrentProjectName: setCurrentProjectName
+        };
 
+        function getCurrentProjects() {
+            return localStorageService.get("currentProjects");
+        };
+
+        function setCurrentProjects(currentProjects) {
+            localStorageService.set("currentProjects", currentProjects);
+        };
+
+        function getCurrentProjectId() {
+            return localStorageService.get("currentProjectId");
+        };
+
+        function setCurrentProjectId(currentProjectId) {
+            localStorageService.set("currentProjectId", currentProjectId);
+        };
+
+        function getCurrentProjectName() {
+            return localStorageService.get("currentProjectName");
+        };
+
+        function setCurrentProjectName(currentProject) {
+            localStorageService.set("currentProjectName", currentProject);
         };
     };
-
-    module.factory("projectsSvc", projectsSvc);
 
 }(angular.module("app")));

@@ -1,6 +1,8 @@
 (function (module) {
 
-    var formEncodeSvc = function () {
+    module.factory("formEncodeSvc", formEncodeSvc);
+
+    function formEncodeSvc() {
         return function (data) {
             var pairs = [];
             for (var name in data) {
@@ -10,6 +12,5 @@
         };
     };
 
-    module.factory("formEncodeSvc", formEncodeSvc);
 
 }(angular.module("app")));

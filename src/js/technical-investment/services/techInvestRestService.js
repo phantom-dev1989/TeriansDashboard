@@ -1,10 +1,12 @@
 (function (module) {
 
-    var technicalInvestmentRestSvc = function (Restangular) {
+    module.factory("technicalInvestmentRestSvc", technicalInvestmentRestSvc);
+
+    technicalInvestmentRestSvc.$inject =['Restangular'];
+
+    function technicalInvestmentRestSvc(Restangular) {
 
         return {};
     };
-
-    module.factory("technicalInvestmentRestSvc", technicalInvestmentRestSvc);
 
 }(angular.module("app")));

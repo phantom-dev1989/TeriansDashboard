@@ -1,8 +1,17 @@
 (function (module) {
 
-    var scanDataSvc = function (moment) {
+    module.factory("scanDataSvc", scanDataSvc);
 
-        var getScanDateAndVersions = function (scans) {
+    scanDataSvc.$inject =['moment'];
+
+    function scanDataSvc(moment) {
+
+        return {
+            getScanDateAndVersions: getScanDateAndVersions,
+            getScanDateAndVersionsEmpty: getScanDateAndVersionsEmpty
+        };
+
+        function getScanDateAndVersions(scans) {
 
             var scanDateAndVersions = [];
             for (var i = 0; i < scans.length; i++) {
@@ -24,7 +33,7 @@
             return scanDateAndVersions;
         };
 
-        var getScanDateAndVersionsEmpty = function () {
+        function getScanDateAndVersionsEmpty() {
 
             var scanDateAndVersions = [];
             for (var i = 0; i < 10; i++) {
@@ -37,14 +46,6 @@
 
             return scanDateAndVersions;
         };
-
-
-        return {
-            getScanDateAndVersions: getScanDateAndVersions,
-            getScanDateAndVersionsEmpty: getScanDateAndVersionsEmpty
-        };
     };
-
-    module.factory("scanDataSvc", scanDataSvc);
 
 }(angular.module("app")));

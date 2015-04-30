@@ -1,10 +1,10 @@
 (function (module) {
 
-    var technicalInvestmentSvc = function () {
+    module.factory("technicalInvestmentSvc", technicalInvestmentSvc);
+
+    function technicalInvestmentSvc() {
 
         return {};
     };
-
-    module.factory("technicalInvestmentSvc", technicalInvestmentSvc);
 
 }(angular.module("app")));

@@ -1,26 +1,28 @@
 (function (module) {
 
-    var projectsRestSvc = function (Restangular) {
+    module.factory("projectsRestSvc", projectsRestSvc);
 
-        var getProjects = function () {
-            return Restangular.all('projects').getList();
-        };
+    projectsRestSvc.$inject =['Restangular'];
 
-        var getProject = function (projectId) {
-            return Restangular.one('projects', projectId).get();
-        };
-
-        var getProjectByScan = function (scanId) {
-            return Restangular.one('projects', scanId).get({byScan: 'true'});
-        };
+    function projectsRestSvc(Restangular) {
 
         return {
             getProjects: getProjects,
             getProject: getProject,
             getProjectByScan: getProjectByScan
         };
-    };
 
-    module.factory("projectsRestSvc", projectsRestSvc);
+        function getProjects() {
+            return Restangular.all('projects').getList();
+        };
+
+        function getProject(projectId) {
+            return Restangular.one('projects', projectId).get();
+        };
+
+        function getProjectByScan(scanId) {
+            return Restangular.one('projects', scanId).get({byScan: 'true'});
+        };
+    };
 
 }(angular.module("app")));

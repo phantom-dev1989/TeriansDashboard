@@ -1,10 +1,10 @@
 (function (module) {
 
-    var dependenciesSvc = function () {
+    module.factory("dependenciesSvc", dependenciesSvc);
+
+    function dependenciesSvc() {
 
         return {};
     };
-
-    module.factory("dependenciesSvc", dependenciesSvc);
 
 }(angular.module("app")));

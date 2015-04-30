@@ -1,10 +1,10 @@
 (function (module) {
 
-    var spinnerSvc = function () {
+    module.factory("spinnerSvc", spinnerSvc);
+
+    function spinnerSvc() {
 
         return {};
     };
-
-    module.factory("spinnerSvc", spinnerSvc);
 
 }(angular.module("app")));

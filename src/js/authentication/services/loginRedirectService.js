@@ -1,10 +1,12 @@
 (function (module) {
 
-    var loginRedirectSvc = function ($q, $location) {
+    module.factory("loginRedirectSvc", loginRedirectSvc);
+
+    loginRedirectSvc.$inject =['$q','$location'];
+
+    function loginRedirectSvc($q, $location) {
 
         return {};
     };
-
-    module.factory("loginRedirectSvc", loginRedirectSvc);
 
 }(angular.module("app")));

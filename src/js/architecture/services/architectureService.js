@@ -1,10 +1,10 @@
 (function (module) {
 
-    var architectureSvc = function () {
+    module.factory("architectureSvc", architectureSvc);
+
+    function architectureSvc() {
 
         return {};
     };
-
-    module.factory("architectureSvc", architectureSvc);
 
 }(angular.module("app")));

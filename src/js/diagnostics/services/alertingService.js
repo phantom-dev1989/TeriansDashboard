@@ -1,6 +1,10 @@
 ﻿(function (module) {
 
-    var alertingSvc = function (toastr) {
+    module.factory("alertingSvc", alertingSvc);
+
+    alertingSvc.$inject =['toastr'];
+
+    function alertingSvc(toastr) {
 
         toastr.options = {
             "closeButton": true,
@@ -19,21 +23,6 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        var addWarning = function (message) {
-            toastr.warning(message);
-        };
-
-        var addError = function (message) {
-            toastr.error(message);
-        };
-
-        var addInfo = function (message) {
-            toastr.info(message);
-        };
-
-        var addSuccess = function (message) {
-            toastr.success(message);
-        };
 
         return {
             addWarning: addWarning,
@@ -41,8 +30,23 @@
             addInfo: addInfo,
             addSuccess: addSuccess
         };
-    };
 
-    module.factory("alertingSvc", alertingSvc);
+        function addWarning(message) {
+            toastr.warning(message);
+        };
+
+        function addError(message) {
+            toastr.error(message);
+        };
+
+        function addInfo(message) {
+            toastr.info(message);
+        };
+
+        function addSuccess(message) {
+            toastr.success(message);
+        };
+
+    };
 
 }(angular.module("app")));

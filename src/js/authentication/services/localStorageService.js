@@ -1,15 +1,25 @@
 (function (module) {
 
-    var localStorageSvc = function ($window) {
+    module.factory("localStorageSvc", localStorageSvc);
+
+    localStorageSvc.$inject =['$window'];
+
+    function localStorageSvc($window) {
 
         var store = $window.localStorage;
 
-        var add = function (key, value) {
+        return {
+            add: add,
+            get: get,
+            remove: remove
+        };
+
+        function add(key, value) {
             value = angular.toJson(value);
             store.setItem(key, value);
         };
 
-        var get = function (key) {
+        function get(key) {
             var value = store.getItem(key);
             if (value) {
                 value = angular.fromJson(value);
@@ -17,17 +27,9 @@
             return value;
         };
 
-        var remove = function (key) {
+        function remove(key) {
             store.removeItem(key);
         };
-
-        return {
-            add: add,
-            get: get,
-            remove: remove
-        };
     };
-
-    module.factory("localStorageSvc", localStorageSvc);
 
 }(angular.module("app")));

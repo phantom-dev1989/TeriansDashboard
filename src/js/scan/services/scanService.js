@@ -1,22 +1,10 @@
 (function (module) {
 
-    var scanSvc = function (localStorageService) {
+    module.factory("scanSvc", scanSvc);
 
-        var getCurrentScans = function () {
-            return localStorageService.get("currentScans");
-        };
+    scanSvc.$inject =['localStorageService'];
 
-        var setCurrentScans = function (currentScans) {
-            localStorageService.set("currentScans", currentScans);
-        };
-
-        var getCurrentScan = function () {
-            return localStorageService.get("currentScan");
-        };
-
-        var setCurrentScan = function (currentScan) {
-            localStorageService.set("currentScan", currentScan);
-        };
+    function scanSvc(localStorageService) {
 
         return {
             getCurrentScans: getCurrentScans,
@@ -24,8 +12,22 @@
             getCurrentScan: getCurrentScan,
             setCurrentScan: setCurrentScan
         };
-    };
 
-    module.factory("scanSvc", scanSvc);
+        function getCurrentScans() {
+            return localStorageService.get("currentScans");
+        };
+
+        function setCurrentScans(currentScans) {
+            localStorageService.set("currentScans", currentScans);
+        };
+
+        function getCurrentScan() {
+            return localStorageService.get("currentScan");
+        };
+
+        function setCurrentScan(currentScan) {
+            localStorageService.set("currentScan", currentScan);
+        };
+    };
 
 }(angular.module("app")));

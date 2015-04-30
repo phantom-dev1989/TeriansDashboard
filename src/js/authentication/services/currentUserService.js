@@ -1,10 +1,10 @@
 (function (module) {
 
-    var currentUserSvc = function () {
+    module.factory("currentUserSvc", currentUserSvc);
+
+    function currentUserSvc() {
 
         return {};
     };
-
-    module.factory("currentUserSvc", currentUserSvc);
 
 }(angular.module("app")));

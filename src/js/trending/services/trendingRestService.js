@@ -1,10 +1,12 @@
 (function (module) {
 
-    var trendingRestSvc = function (Restangular) {
+    module.factory("trendingRestSvc", trendingRestSvc);
+
+    trendingRestSvc.$inject =['Restangular'];
+
+    function trendingRestSvc(Restangular) {
 
         return {};
     };
-
-    module.factory("trendingRestSvc", trendingRestSvc);
 
 }(angular.module("app")));

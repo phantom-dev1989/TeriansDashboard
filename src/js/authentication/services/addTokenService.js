@@ -1,10 +1,10 @@
 (function (module) {
 
-    var addTokenSvc = function () {
+    module.factory("addTokenSvc", addTokenSvc);
+
+    function addTokenSvc() {
 
         return {};
     };
-
-    module.factory("addTokenSvc", addTokenSvc);
 
 }(angular.module("app")));

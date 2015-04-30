@@ -1,21 +1,23 @@
 (function (module) {
 
-    var issuesSvc = function (localStorageService) {
+    module.factory("issuesSvc", issuesSvc);
 
-        var setCurrentIssues = function (currentIssues) {
-            localStorageService.set("currentIssues", currentIssues);
-        }
+    issuesSvc.$inject =['localStorageService'];
 
-        var getCurrentIssues = function () {
-            localStorageService.get("currentIssues");
-        }
+    function issuesSvc(localStorageService) {
 
         return {
             setCurrentIssues: setCurrentIssues,
             getCurrentIssues: getCurrentIssues
         };
-    };
 
-    module.factory("issuesSvc", issuesSvc);
+        function setCurrentIssues(currentIssues) {
+            localStorageService.set("currentIssues", currentIssues);
+        }
+
+        function getCurrentIssues() {
+            localStorageService.get("currentIssues");
+        }
+    };
 
 }(angular.module("app")));

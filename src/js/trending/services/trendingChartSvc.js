@@ -6,9 +6,17 @@
  */
 (function (module) {
 
-    var trendingChartSvc = function (moment) {
+    module.factory("trendingChartSvc", trendingChartSvc);
 
-        var transformforAreaSplineChart = function (scans) {
+    trendingChartSvc.$inject =['moment'];
+
+    function trendingChartSvc(moment) {
+
+        return {
+            transformforAreaSplineChart: transformforAreaSplineChart
+        };
+
+        function transformforAreaSplineChart(scans) {
 
             var tempScans = []
             for (var i = 0; i < scans.length; i++) {
@@ -33,15 +41,8 @@
                     date: moment(scans[i].date).format('MM-DD-YYYY hh:mm A')
                 });
             }
-
             return tempScans;
         }
-
-        return {
-            transformforAreaSplineChart: transformforAreaSplineChart
-        };
     };
-
-    module.factory("trendingChartSvc", trendingChartSvc);
 
 }(angular.module("app")));

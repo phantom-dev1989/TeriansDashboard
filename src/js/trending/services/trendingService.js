@@ -1,10 +1,10 @@
 (function (module) {
 
-    var trendingSvc = function () {
+    module.factory("trendingSvc", trendingSvc);
+
+    function trendingSvc() {
 
         return {};
     };
-
-    module.factory("trendingSvc", trendingSvc);
 
 }(angular.module("app")));
