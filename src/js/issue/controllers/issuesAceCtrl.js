@@ -7,7 +7,11 @@
 
 (function (module) {
 
-    var issuesAceCtrl = function ($scope) {
+    module.controller("issuesAceCtrl", issuesAceCtrl);
+
+    issuesAceCtrl.$inject = ['$scope'];
+
+    function issuesAceCtrl($scope) {
 
         // The modes
         $scope.modes = ['Java', 'XML', 'Javascript'];
@@ -47,7 +51,5 @@
             '}';
 
     };
-
-    module.controller("issuesAceCtrl", issuesAceCtrl);
 
 }(angular.module("app")));

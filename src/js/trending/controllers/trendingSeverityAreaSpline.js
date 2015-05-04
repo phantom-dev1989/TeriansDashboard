@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var trendingSeverityAreaSplineCtrl = function ($scope, trendingChartSvc) {
+    module.controller("trendingSeverityAreaSplineCtrl", trendingSeverityAreaSplineCtrl);
+
+    trendingSeverityAreaSplineCtrl.$inject = ['$scope', 'trendingChartSvc'];
+
+    function trendingSeverityAreaSplineCtrl($scope, trendingChartSvc) {
 
         var transformedData = trendingChartSvc.transformforAreaSplineChart($scope.scans);
 
@@ -83,7 +87,6 @@
         }];
 
     }
-    module.controller("trendingSeverityAreaSplineCtrl", trendingSeverityAreaSplineCtrl);
 
 }(angular.module("app")));
 

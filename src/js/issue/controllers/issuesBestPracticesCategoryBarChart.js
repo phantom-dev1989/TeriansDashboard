@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesBestPracticesCategoryBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesBestPracticesCategoryBarChartCtrl", issuesBestPracticesCategoryBarChartCtrl);
+
+    issuesBestPracticesCategoryBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesBestPracticesCategoryBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforBasicColumnChart($scope.issues);
 
@@ -49,7 +53,5 @@
             data: data
         }];
     };
-
-    module.controller("issuesBestPracticesCategoryBarChartCtrl", issuesBestPracticesCategoryBarChartCtrl);
 
 }(angular.module("app")));

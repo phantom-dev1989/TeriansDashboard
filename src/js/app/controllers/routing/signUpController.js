@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var signUpCtrl = function ($scope, $state, localStorageService, scanSvc, scanRestSvc, alertingSvc) {
+    module.controller("signUpCtrl", signUpCtrl);
+
+    signUpCtrl.$inject = ['$scope', '$state', 'localStorageService', 'scanSvc', 'scanRestSvc', 'alertingSvc'];
+
+    function signUpCtrl($scope, $state, localStorageService, scanSvc, scanRestSvc, alertingSvc) {
 
         $scope.cancelSignUp = function () {
             localStorageService.clearAll();
@@ -27,7 +31,5 @@
 
 
     };
-
-    module.controller("signUpCtrl", signUpCtrl);
 
 }(angular.module("app")));

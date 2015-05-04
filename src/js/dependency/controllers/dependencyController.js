@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var dependencyCtrl = function ($scope, dependenciesRestSvc, alertingSvc, scanSvc, projectsSvc, dependencyDataSvc) {
+    module.controller("dependencyCtrl", dependencyCtrl);
+
+    dependencyCtrl.$inject = ['$scope', 'dependenciesRestSvc', 'alertingSvc', 'scanSvc', 'projectsSvc', 'dependencyDataSvc'];
+
+    function dependencyCtrl($scope, dependenciesRestSvc, alertingSvc, scanSvc, projectsSvc, dependencyDataSvc) {
 
         $scope.issues = dependencyDataSvc.getIssuesDataEmpty();
         $scope.vulnerabilities = dependencyDataSvc.getCVEDataEmpty();
@@ -151,7 +155,5 @@
         };
 
     };
-
-    module.controller("dependencyCtrl", dependencyCtrl);
 
 }(angular.module("app")));

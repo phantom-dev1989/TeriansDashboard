@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var trendingTechDebtLineChart = function ($scope, trendingChartSvc) {
+    module.controller("trendingTechDebtLineChart", trendingTechDebtLineChart);
+
+    trendingTechDebtLineChart.$inject = ['$scope', 'trendingChartSvc'];
+
+    function trendingTechDebtLineChart($scope, trendingChartSvc) {
 
         var transformedData = trendingChartSvc.transformforAreaSplineChart($scope.scans);
 
@@ -46,7 +50,6 @@
         }];
 
     }
-    module.controller("trendingTechDebtLineChart", trendingTechDebtLineChart);
 
 }(angular.module("app")));
 

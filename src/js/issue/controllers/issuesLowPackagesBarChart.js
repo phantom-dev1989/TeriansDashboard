@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesLowPackagesBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesLowPackagesBarChartCtrl", issuesLowPackagesBarChartCtrl);
+
+    issuesLowPackagesBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesLowPackagesBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforStackedBarChart($scope.issues);
 
@@ -37,7 +41,5 @@
         }];
 
     };
-
-    module.controller("issuesLowPackagesBarChartCtrl", issuesLowPackagesBarChartCtrl);
 
 }(angular.module("app")));

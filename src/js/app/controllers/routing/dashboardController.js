@@ -3,12 +3,12 @@
  */
 (function (module) {
 
-    var dashboardCtrl = function () {
+    module.controller("dashboardCtrl", dashboardCtrl);
+
+    function dashboardCtrl() {
 
         $(window).resize();
 
     };
-
-    module.controller("dashboardCtrl", dashboardCtrl);
 
 }(angular.module("app")));

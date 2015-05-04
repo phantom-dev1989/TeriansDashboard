@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var highIssuesCtrl = function ($scope, scanSvc, moment, issues) {
+    module.controller("highIssuesCtrl", highIssuesCtrl);
+
+    highIssuesCtrl.$inject = ['$scope', 'scanSvc', 'moment','issues'];
+
+    function highIssuesCtrl($scope, scanSvc, moment, issues) {
 
         $scope.issues = issues;
 
@@ -63,7 +67,5 @@
         }, true);
 
     };
-
-    module.controller("highIssuesCtrl", highIssuesCtrl);
 
 }(angular.module("app")));

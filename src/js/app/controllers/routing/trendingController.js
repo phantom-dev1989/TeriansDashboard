@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var trendingCtrl = function ($scope, scanSvc, moment, scans) {
+    module.controller("trendingCtrl", trendingCtrl);
+
+    trendingCtrl.$inject = ['$scope', 'scanSvc', 'moment','scans'];
+
+    function trendingCtrl($scope, scanSvc, moment, scans) {
 
         $scope.scans = scans;
 
@@ -64,7 +68,5 @@
 
 
     };
-
-    module.controller("trendingCtrl", trendingCtrl);
 
 }(angular.module("app")));

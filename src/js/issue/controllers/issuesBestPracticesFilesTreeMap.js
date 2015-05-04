@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesBestPracticesFilesTreeMapCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesBestPracticesFilesTreeMapCtrl", issuesBestPracticesFilesTreeMapCtrl);
+
+    issuesBestPracticesFilesTreeMapCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesBestPracticesFilesTreeMapCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforTreeMap($scope.issues);
 
@@ -20,7 +24,5 @@
 
         $scope.data = data;
     };
-
-    module.controller("issuesBestPracticesFilesTreeMapCtrl", issuesBestPracticesFilesTreeMapCtrl);
 
 }(angular.module("app")));

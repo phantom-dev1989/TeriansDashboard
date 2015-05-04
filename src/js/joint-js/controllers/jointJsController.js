@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var jointJsUmlClassDiagramCtrl = function ($scope) {
+    module.controller("jointJsUmlClassDiagramCtrl", jointJsUmlClassDiagramCtrl);
+
+    jointJsUmlClassDiagramCtrl.$inject = ['$scope'];
+
+    function jointJsUmlClassDiagramCtrl($scope) {
 
         var uml = joint.shapes.uml;
 

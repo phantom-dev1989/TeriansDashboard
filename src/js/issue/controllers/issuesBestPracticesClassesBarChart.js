@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesBestPracticesClassesBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesBestPracticesClassesBarChartCtrl", issuesBestPracticesClassesBarChartCtrl);
+
+    issuesBestPracticesClassesBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesBestPracticesClassesBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforColumnStackedChart($scope.issues);
 
@@ -52,7 +56,5 @@
         }];
 
     };
-
-    module.controller("issuesBestPracticesClassesBarChartCtrl", issuesBestPracticesClassesBarChartCtrl);
 
 }(angular.module("app")));

@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesCriticalPieChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesCriticalPieChartCtrl", issuesCriticalPieChartCtrl);
+
+    issuesCriticalPieChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesCriticalPieChartCtrl($scope, issuesChartSvc) {
 
         var data = issuesChartSvc.transformforPIEChart($scope.issues);
 
@@ -21,7 +25,5 @@
         }];
 
     };
-
-    module.controller("issuesCriticalPieChartCtrl", issuesCriticalPieChartCtrl);
 
 }(angular.module("app")));

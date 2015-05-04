@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var architectureCtrl = function ($scope, scanSvc, moment) {
+    module.controller("architectureCtrl", architectureCtrl);
+
+    architectureCtrl.$inject = ['$scope', 'scanSvc', 'moment'];
+
+    function architectureCtrl($scope, scanSvc, moment) {
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
         $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
@@ -20,7 +24,5 @@
         $scope.loc = scanSvc.getCurrentScan().loc;
 
     };
-
-    module.controller("architectureCtrl", architectureCtrl);
 
 }(angular.module("app")));

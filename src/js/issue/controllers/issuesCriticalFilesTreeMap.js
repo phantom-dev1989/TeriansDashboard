@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesCriticalFilesTreeMapCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesCriticalFilesTreeMapCtrl", issuesCriticalFilesTreeMapCtrl);
+
+    issuesCriticalFilesTreeMapCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesCriticalFilesTreeMapCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforTreeMap($scope.issues);
 
@@ -20,7 +24,5 @@
 
         $scope.data = data;
     };
-
-    module.controller("issuesCriticalFilesTreeMapCtrl", issuesCriticalFilesTreeMapCtrl);
 
 }(angular.module("app")));

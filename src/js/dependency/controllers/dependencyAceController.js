@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var dependencyAceCtrl = function ($scope) {
+    module.controller("dependencyAceCtrl", dependencyAceCtrl);
+
+    dependencyAceCtrl.$inject = ['$scope'];
+
+    function dependencyAceCtrl($scope) {
 
         // The modes
         $scope.modes = ['Java', 'XML', 'Javascript'];
@@ -33,6 +37,6 @@
 
     };
 
-    module.controller("dependencyAceCtrl", dependencyAceCtrl);
+
 
 }(angular.module("app")));

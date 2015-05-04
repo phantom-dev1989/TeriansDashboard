@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var dependencyCVECtrl = function ($scope) {
+    module.controller("dependencyCVECtrl", dependencyCVECtrl);
+
+    dependencyCVECtrl.$inject = ['$scope'];
+
+    function dependencyCVECtrl($scope) {
 
         $scope.gridOptions4 = {
             columnDefs: [
@@ -57,7 +61,5 @@
             ;
         };
     };
-
-    module.controller("dependencyCVECtrl", dependencyCVECtrl);
 
 }(angular.module("app")));

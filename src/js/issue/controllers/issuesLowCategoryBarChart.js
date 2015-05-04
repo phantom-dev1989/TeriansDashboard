@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesLowCategoryBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesLowCategoryBarChartCtrl", issuesLowCategoryBarChartCtrl);
+
+    issuesLowCategoryBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesLowCategoryBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforBasicColumnChart($scope.issues);
 
@@ -49,7 +53,5 @@
             data: data
         }];
     };
-
-    module.controller("issuesLowCategoryBarChartCtrl", issuesLowCategoryBarChartCtrl);
 
 }(angular.module("app")));

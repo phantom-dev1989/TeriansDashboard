@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesBestPracticesPieChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesBestPracticesPieChartCtrl", issuesBestPracticesPieChartCtrl);
+
+    issuesBestPracticesPieChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesBestPracticesPieChartCtrl($scope, issuesChartSvc) {
 
         var data = issuesChartSvc.transformforPIEChart($scope.issues);
 
@@ -21,7 +25,5 @@
         }];
 
     };
-
-    module.controller("issuesBestPracticesPieChartCtrl", issuesBestPracticesPieChartCtrl);
 
 }(angular.module("app")));

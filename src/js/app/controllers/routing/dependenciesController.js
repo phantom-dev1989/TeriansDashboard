@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var dependenciesCtrl = function ($scope, scanSvc, moment, dependencies) {
+    module.controller("dependenciesCtrl", dependenciesCtrl);
+
+    dependenciesCtrl.$inject = ['$scope', 'scanSvc', 'moment','dependencies'];
+
+    function dependenciesCtrl($scope, scanSvc, moment, dependencies) {
 
         $scope.dependencies = dependencies;
 
@@ -59,7 +63,5 @@
 
 
     };
-
-    module.controller("dependenciesCtrl", dependenciesCtrl);
 
 }(angular.module("app")));

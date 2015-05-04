@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var techInvestmentCtrl = function ($scope, scanSvc, moment) {
+    module.controller("techInvestmentCtrl", techInvestmentCtrl);
+
+    techInvestmentCtrl.$inject = ['$scope', 'scanSvc', 'moment'];
+
+    function techInvestmentCtrl($scope, scanSvc, moment) {
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
         $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
@@ -57,7 +61,5 @@
 
 
     };
-
-    module.controller("techInvestmentCtrl", techInvestmentCtrl);
 
 }(angular.module("app")));

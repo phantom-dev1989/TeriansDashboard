@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesCriticalCategoryBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesCriticalCategoryBarChartCtrl", issuesCriticalCategoryBarChartCtrl);
+
+    issuesCriticalCategoryBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesCriticalCategoryBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforBasicColumnChart($scope.issues);
 
@@ -49,7 +53,5 @@
             data: data
         }];
     };
-
-    module.controller("issuesCriticalCategoryBarChartCtrl", issuesCriticalCategoryBarChartCtrl);
 
 }(angular.module("app")));

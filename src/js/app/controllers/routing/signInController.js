@@ -3,7 +3,12 @@
  */
 (function (module) {
 
-    var signInCtrl = function ($scope, alertingSvc, $state, localStorageService,
+    module.controller("signInCtrl", signInCtrl);
+
+    signInCtrl.$inject = ['$scope', 'alertingSvc', '$state', 'localStorageService',
+        'scanSvc', 'scanRestSvc', 'projectsRestSvc', 'projectsSvc'];
+
+    function signInCtrl($scope, alertingSvc, $state, localStorageService,
                                scanSvc, scanRestSvc, projectsRestSvc, projectsSvc) {
 
         $scope.signIn = function () {
@@ -39,7 +44,5 @@
         };
 
     };
-
-    module.controller("signInCtrl", signInCtrl);
 
 }(angular.module("app")));

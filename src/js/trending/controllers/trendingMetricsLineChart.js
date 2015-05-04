@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var trendingMetricLineChart = function ($scope, trendingChartSvc) {
+    module.controller("trendingMetricLineChart", trendingMetricLineChart);
+
+    trendingMetricLineChart.$inject = ['$scope', 'trendingChartSvc'];
+
+    function trendingMetricLineChart($scope, trendingChartSvc) {
 
         var transformedData = trendingChartSvc.transformforAreaSplineChart($scope.scans);
 
@@ -65,7 +69,6 @@
         }];
 
     }
-    module.controller("trendingMetricLineChart", trendingMetricLineChart);
 
 }(angular.module("app")));
 

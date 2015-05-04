@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesHighCategoryBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesHighCategoryBarChartCtrl", issuesHighCategoryBarChartCtrl);
+
+    issuesHighCategoryBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesHighCategoryBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforBasicColumnChart($scope.issues);
 
@@ -49,7 +53,5 @@
             data: data
         }];
     };
-
-    module.controller("issuesHighCategoryBarChartCtrl", issuesHighCategoryBarChartCtrl);
 
 }(angular.module("app")));

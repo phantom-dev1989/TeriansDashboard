@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var remediationCtrl = function ($scope, scanSvc, moment) {
+    module.controller("remediationCtrl", remediationCtrl);
+
+    remediationCtrl.$inject = ['$scope', 'scanSvc', 'moment'];
+
+    function remediationCtrl($scope, scanSvc, moment) {
 
         $scope.issueCount = scanSvc.getCurrentScan().issueCount;
         $scope.issueCriticalCount = scanSvc.getCurrentScan().issueCriticalCount;
@@ -19,9 +23,6 @@
         $scope.scanned = moment(scanSvc.getCurrentScan().date).format('MM-DD-YYYY hh:mm A');
         $scope.loc = scanSvc.getCurrentScan().loc;
 
-
     };
-
-    module.controller("remediationCtrl", remediationCtrl);
 
 }(angular.module("app")));

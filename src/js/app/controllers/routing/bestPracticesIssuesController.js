@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var bestPracticesIssuesCtrl = function ($scope, scanSvc, moment, issues) {
+    module.controller("bestPracticesIssuesCtrl", bestPracticesIssuesCtrl);
+
+    bestPracticesIssuesCtrl.$inject = ['$scope', 'scanSvc', 'moment','issues'];
+
+    function bestPracticesIssuesCtrl($scope, scanSvc, moment, issues) {
 
         $scope.issues = issues;
 
@@ -62,7 +66,5 @@
         }, true);
 
     };
-
-    module.controller("bestPracticesIssuesCtrl", bestPracticesIssuesCtrl);
 
 }(angular.module("app")));

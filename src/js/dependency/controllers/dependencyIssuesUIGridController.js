@@ -4,7 +4,11 @@
 
 (function (module) {
 
-    var dependencyIssuesCtrl = function ($scope) {
+    module.controller("dependencyIssuesCtrl", dependencyIssuesCtrl);
+
+    dependencyIssuesCtrl.$inject = ['$scope'];
+
+    function dependencyIssuesCtrl($scope) {
 
         $scope.gridOptions2 = {
             columnDefs: [
@@ -58,7 +62,5 @@
             ;
         };
     };
-
-    module.controller("dependencyIssuesCtrl", dependencyIssuesCtrl);
 
 }(angular.module("app")));

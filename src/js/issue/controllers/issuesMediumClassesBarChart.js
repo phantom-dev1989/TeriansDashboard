@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesMediumClassesBarChartCtrl = function ($scope, issuesChartSvc) {
+    module.controller("issuesMediumClassesBarChartCtrl", issuesMediumClassesBarChartCtrl);
+
+    issuesMediumClassesBarChartCtrl.$inject = ['$scope','issuesChartSvc'];
+
+    function issuesMediumClassesBarChartCtrl($scope, issuesChartSvc) {
 
         var transformData = issuesChartSvc.transformforColumnStackedChart($scope.issues);
 
@@ -52,7 +56,5 @@
         }];
 
     };
-
-    module.controller("issuesMediumClassesBarChartCtrl", issuesMediumClassesBarChartCtrl);
 
 }(angular.module("app")));

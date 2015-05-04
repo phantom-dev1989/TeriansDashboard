@@ -3,7 +3,11 @@
  */
 (function (module) {
 
-    var issuesDrillDownTableCtrl = function ($scope, $modal) {
+    module.controller("issuesDrillDownTableCtrl", issuesDrillDownTableCtrl);
+
+    issuesDrillDownTableCtrl.$inject = ['$scope','$modal'];
+
+    function issuesDrillDownTableCtrl($scope, $modal) {
 
         var issueData = [];
         for (var i = 0; i < $scope.issues.length; i++) {
@@ -98,7 +102,5 @@
         };
 
     };
-
-    module.controller("issuesDrillDownTableCtrl", issuesDrillDownTableCtrl);
 
 }(angular.module("app")));
