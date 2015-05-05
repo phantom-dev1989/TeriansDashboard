@@ -5,37 +5,14 @@
 
     module.controller("signInCtrl", signInCtrl);
 
-    signInCtrl.$inject = ['$scope', 'alertingSvc', '$state', 'localStorageService',
-        'scanSvc', 'scanRestSvc', 'projectsRestSvc', 'projectsSvc'];
+    signInCtrl.$inject = ['$scope', '$state', 'alertingSvc'];
 
-    function signInCtrl($scope, alertingSvc, $state, localStorageService,
-                               scanSvc, scanRestSvc, projectsRestSvc, projectsSvc) {
+    function signInCtrl($scope, $state, alertingSvc) {
 
         $scope.signIn = function () {
 
-            localStorageService.clearAll();
-            // set if default scan for the project hack
-
-            if (scanSvc.getCurrentScan() === undefined || scanSvc.getCurrentScan() === null) {
-
-                scanRestSvc.getLastScan().then(function (scan) {
-
-                    projectsRestSvc.getProjectByScan(scan.teriansId).then(function (project) {
-
-                        scanSvc.setCurrentScan(scan);
-                        projectsSvc.setCurrentProjectName(project.name);
-                        projectsSvc.setCurrentProjectId(project.teriansId);
-                        $state.go('dashboard.critical');
-                        alertingSvc.addSuccess("You are Signed In!!");
-
-                    }, function () {
-                        alertingSvc.addError("There was an error getting the last scan data");
-                    });
-
-                }, function () {
-                    alertingSvc.addError("There was an error getting the last scan data");
-                });
-            }
+            $state.go('dashboard.critical');
+            alertingSvc.addSuccess("You are Signed In!!");
 
         };
 

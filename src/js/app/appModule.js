@@ -190,17 +190,39 @@
 
     });
 
-    app.run(function ($rootScope, usSpinnerService) {
+    app.run(function ($rootScope, $state, usSpinnerService, scanSvc, scanRestSvc,
+                      projectsRestSvc, projectsSvc, alertingSvc, localStorageService) {
 
-        $rootScope
-            .$on('$stateChangeStart',
+        // add code to get default scans
+        localStorageService.clearAll();
+
+        if (scanSvc.getCurrentScan() === undefined || scanSvc.getCurrentScan() === null) {
+
+            scanRestSvc.getLastScan().then(function (scan) {
+
+                projectsRestSvc.getProjectByScan(scan.teriansId).then(function (project) {
+
+                    scanSvc.setCurrentScan(scan);
+                    projectsSvc.setCurrentProjectName(project.name);
+                    projectsSvc.setCurrentProjectId(project.teriansId);
+                    console.log("Initializing scan data");
+
+                }, function () {
+                    alertingSvc.addError("There was an error getting the last scan data");
+                });
+
+            }, function () {
+                alertingSvc.addError("There was an error getting the last scan data");
+            });
+        }
+
+        $rootScope.$on('$stateChangeStart',
             function (event, toState, toParams, fromState, fromParams) {
                 console.log("State Change Started");
                 usSpinnerService.spin('spinner-1');
             });
 
-        $rootScope
-            .$on('$stateChangeSuccess',
+        $rootScope.$on('$stateChangeSuccess',
             function (event, toState, toParams, fromState, fromParams) {
                 console.log("State Change Success");
                 usSpinnerService.stop('spinner-1');
