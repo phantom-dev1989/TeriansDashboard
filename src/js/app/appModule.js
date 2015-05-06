@@ -8,13 +8,13 @@
         'ngSanitize', 'ui.utils', 'ui.grid', 'ui.grid.autoResize', 'ui.bootstrap', 'LocalStorageModule', 'ui.grid.exporter', 'ngAnimate', 'ngTouch']);
 
 // Restangular Configuration
-    app.config(function (RestangularProvider) {
+    app.config(['RestangularProvider', function (RestangularProvider) {
         // Note that we run everything on the localhost
         RestangularProvider.setBaseUrl('http://10.16.255.159:8080/terians/api/v1');
-    });
+    }]);
 
 // Extra data from Collections Nested in JSON
-    app.config(function (RestangularProvider) {
+    app.config(['RestangularProvider', function (RestangularProvider) {
 
         // add a response intereceptor
         RestangularProvider.addResponseInterceptor(function (data, operation) {
@@ -32,7 +32,7 @@
 
         RestangularProvider.setDefaultHttpFields({cache: true});
 
-    });
+    }]);
 
 // Enable Cross-Origin Resource Sharing
     app.config(['$httpProvider', function ($httpProvider) {
@@ -41,7 +41,7 @@
     }]);
 
 // Router Configuration
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider.state('signin', {
 
@@ -73,9 +73,9 @@
             templateUrl: 'src/html/partials/critical.html',
             controller: 'criticalIssuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getCriticalIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
 
         });
@@ -86,9 +86,9 @@
             templateUrl: 'src/html/partials/trending.html',
             controller: 'trendingCtrl',
             resolve: {
-                scans: function (scanRestSvc, projectsSvc) {
+                scans: ['scanRestSvc','projectsSvc', function (scanRestSvc, projectsSvc) {
                     return scanRestSvc.getScans(projectsSvc.getCurrentProjectId());
-                }
+                }]
             }
 
         });
@@ -107,11 +107,10 @@
             templateUrl: 'src/html/partials/dependencies.html',
             controller: 'dependenciesCtrl',
             resolve: {
-                dependencies: function (dependenciesRestSvc, scanSvc, projectsSvc) {
+                dependencies: ['dependenciesRestSvc','scanSvc','projectsSvc', function (dependenciesRestSvc, scanSvc, projectsSvc) {
                     return dependenciesRestSvc.getDependencies(projectsSvc.getCurrentProjectId(), scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
-
         });
 
         $stateProvider.state('dashboard.issuesDrillDown', {
@@ -120,11 +119,10 @@
             templateUrl: 'src/html/partials/issuesDrillDown.html',
             controller: 'issuesDrillDownCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
-
         });
 
         $stateProvider.state('dashboard.low', {
@@ -133,11 +131,10 @@
             templateUrl: 'src/html/partials/low.html',
             controller: 'lowIssuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getLowIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
-
         });
 
         $stateProvider.state('dashboard.high', {
@@ -146,9 +143,9 @@
             templateUrl: 'src/html/partials/high.html',
             controller: 'highIssuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getHighIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
         });
 
@@ -158,11 +155,10 @@
             templateUrl: 'src/html/partials/medium.html',
             controller: 'mediumIssuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getMediumIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
-
         });
 
         $stateProvider.state('dashboard.bestPractices', {
@@ -171,11 +167,10 @@
             templateUrl: 'src/html/partials/bestPractices.html',
             controller: 'bestPracticesIssuesCtrl',
             resolve: {
-                issues: function (issuesRestSvc, scanSvc) {
+                issues: ['issuesRestSvc','scanSvc', function (issuesRestSvc, scanSvc) {
                     return issuesRestSvc.getBestPracticesIssues(scanSvc.getCurrentScan().teriansId);
-                }
+                }]
             }
-
         });
 
         $stateProvider.state('dashboard.architecture', {
@@ -188,9 +183,12 @@
 
         $urlRouterProvider.otherwise('/signin');
 
-    });
+    }]);
 
-    app.run(function ($rootScope, $state, usSpinnerService, scanSvc, scanRestSvc,
+    app.run(['$rootScope','$state','usSpinnerService',
+        'scanSvc','scanRestSvc','projectsRestSvc',
+        'projectsSvc','alertingSvc','localStorageService',
+        function ($rootScope, $state, usSpinnerService, scanSvc, scanRestSvc,
                       projectsRestSvc, projectsSvc, alertingSvc, localStorageService) {
 
         // add code to get default scans
@@ -227,6 +225,6 @@
                 console.log("State Change Success");
                 usSpinnerService.stop('spinner-1');
             });
-    });
+    }]);
 
 }());
