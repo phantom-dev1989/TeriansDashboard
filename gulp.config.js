@@ -1,6 +1,6 @@
 module.exports = function() {
 
-    var client = '.';
+    var client = './';
     var temp = './.tmp/';
 
     var config = {
@@ -8,29 +8,30 @@ module.exports = function() {
         /**
          * Files paths
          */
+        // all js to lint
         alljs: [
-            'src/js/**/*.js',
+            './src/js/**/*.js',
             './*.js'
         ],
         client: client,
-        css: 'src/resources/css/*.css',
+        css: './src/resources/css/*.css',
         index: 'index.html',
         defaultPort: 63342,
         specRunner: 'SpecRunner.html',
         build: './build/',
-        images : 'src/resources/img/**/*.*',
-        fonts:'lib/font-awesome/fonts/**/*.*',
+        images : './src/resources/img/**/*.*',
+        fonts:'./lib/font-awesome/fonts/**/*.*',
         temp : temp,
-        htmltemplates: 'src/html/**/*.html',
+        htmltemplates: './src/html/**/*.html',
         js: [
-            'src/js/**/*.js'
+            './src/js/**/*.js'
         ],
         /**
          * Bower and NPM locations
          */
         bower: {
             json: require('./bower.json'),
-            directory: 'lib',
+            directory: './lib',
             ignorePath: '../..'
         },
         /**

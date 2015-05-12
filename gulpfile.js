@@ -27,7 +27,8 @@ gulp.task('build',['optimize'], function() {
 // Clean build folder tasks
 gulp.task('clean', function(done) {
     log('Cleaning: ' + $.util.colors.blue(config.build));
-    del(config.build, done);
+    var delconfig = [].concat(config.build, config.temp);
+    del(delconfig, done);
 });
 
 gulp.task('clean-fonts', function(done) {
@@ -98,6 +99,7 @@ gulp.task('template-cache',['clean-code'], function(done) {
         .pipe(gulp.dest(config.temp));
 });
 
+// pipe images to build folder
 gulp.task('images',['clean-images'], function() {
 
     log('Copying and compressing images to build folder');
@@ -108,6 +110,7 @@ gulp.task('images',['clean-images'], function() {
 
 });
 
+// pipe in fonts to build folder
 gulp.task('fonts',['clean-fonts'], function() {
 
     log('Copying fonts to build folder');
@@ -163,7 +166,9 @@ gulp.task('inject', ['wiredep','wiredep-test','template-cache'], function() {
 
 gulp.task('browsersync', function() {
 
-    browserSync.init(['.src/resources/**.*', './src/js/**.*'], {
+    // startBrowserSync();
+
+     browserSync.init(['.src/resources/!**.*', './src/js/!**.*'], {
         server: {
             baseDir: "./"
         }
@@ -194,13 +199,20 @@ function clean(path, done) {
     del(path, done);
 }
 
+// browser sync options
 function startBrowserSync() {
 
-    log('Starting browser-sync on port ');
+    var port = 3000;
+
+    if(args.nosync || browserSync.active){
+        return;
+    }
+
+    log('Starting browser-sync on port ' + port);
 
     var options = {
-        proxy: 'localhost:63342',
-        port: 63342,
+        proxy: 'localhost:'+ port,
+        port: port,
         files: ['**/*.*'],
         ghostMode: {
             clicks: true,
