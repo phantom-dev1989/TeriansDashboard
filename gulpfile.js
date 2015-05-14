@@ -7,6 +7,7 @@ var args = require('yargs').argv;
 var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
+var karma = require('karma').server;
 // Include Our Plugins
 
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -21,13 +22,13 @@ gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
 gulp.task('build',['optimize'], function() {
-    log('Building the source code');
+    log('Building the Javascript, HTML, and CSS source code');
 });
 
 // Clean build folder tasks
 gulp.task('clean', function(done) {
-    log('Cleaning: ' + $.util.colors.blue(config.build));
     var delconfig = [].concat(config.build, config.temp);
+    log('Cleaning: ' + $.util.colors.blue(delconfig));
     del(delconfig, done);
 });
 
@@ -48,12 +49,46 @@ gulp.task('clean-code', function(done) {
     clean(files, done);
 });
 
+/**
+ * Bump the version
+ * --type=pre will bump the prerelease version *.*.*-x
+ * --type=patch or no flag will bump the patch version *.*.x
+ * --type=minor will bump the minor version *.x.*
+ * --type=major will bump the major version x.*.*
+ * --version=1.2.3 will bump to a specific version and ignore other flags
+ */
+gulp.task('bump', function() {
+    var msg = 'Bumping versions';
+    var type = args.type;
+    var version = args.version;
+    var options = {};
+    if (version) {
+        options.version = version;
+        msg += ' to ' + version;
+    } else {
+        options.type = type;
+        msg += ' for a ' + type;
+    }
+    log(msg);
+
+    return gulp
+        .src(config.packages)
+        .pipe($.print())
+        .pipe($.bump(options))
+        .pipe(gulp.dest(config.root))
+});
+
 // Adding to build file tasks
-gulp.task('optimize',['inject','fonts','images'], function(done) {
+gulp.task('optimize',['inject','template-cache','fonts','images','html'], function() {
     log('Optimizing the javascript, css, html');
 
+    // gulp-useref looks for the following comments to read the css and js files inorder to combine them
+    // buid:css lib.css
+    // build:css app.css
+    // build:js lib.js
+    // build:js app.js
     var assets = $.useref.assets({searchPath: './'});
-    var templateCache = config.temp + config.templateCache.file;
+    var templateCache = '.tmp/templates.js';
     var cssFilter = $.filter('**/*.css');
     var jsLibFilter = $.filter('**/lib.js');
     var jsAppFilter = $.filter('**/app.js');
@@ -65,29 +100,27 @@ gulp.task('optimize',['inject','fonts','images'], function(done) {
             starttag: '<!-- inject:templates:js -->'
         }))
         .pipe(assets)
-        .pipe(cssFilter)
+        .pipe(cssFilter) // get css and minify with gulp-csso and restore to pipeline
         .pipe($.csso())
         .pipe(cssFilter.restore())
-        .pipe(jsLibFilter)
+        .pipe(jsLibFilter) // get javascript minify with uglify and restore to pipeline
         .pipe($.uglify())
         .pipe(jsLibFilter.restore())
-        .pipe(jsAppFilter)
+        .pipe(jsAppFilter)// get angular javascript minify with uglify and restore to pipeline, also annotates custom angular code
         .pipe($.ngAnnotate({add: true}))
         .pipe($.uglify())
         .pipe(jsAppFilter.restore())
-        .pipe($.rev())// app.js --> app.1j88889jr.js
+        .pipe($.rev())// app.js --> app.1j88889jr.js cache busting
         .pipe(assets.restore())
         .pipe($.useref())
-        .pipe($.revReplace())
+        .pipe($.revReplace())// renaming in index.html
         .pipe(gulp.dest(config.build))
         .pipe($.rev.manifest())
         .pipe(gulp.dest(config.build));
-
-
 });
 
 
-// template cache, warm it up
+// template cache, warm it up, allows angular to use template chache instead of going to server
 gulp.task('template-cache',['clean-code'], function(done) {
     log('Creating AngularJS $templateCache');
 
@@ -106,7 +139,17 @@ gulp.task('images',['clean-images'], function() {
 
     return gulp.src(config.images)
         .pipe($.imagemin({optimizationLevel: 4}))
-        .pipe(gulp.dest(config.build + 'images'));
+        .pipe(gulp.dest(config.build + 'src/resources/img'));
+
+});
+
+// pipe in fonts to build folder
+gulp.task('html', function() {
+
+    log('Copying html to build folder');
+
+    return gulp.src(config.htmltemplates)
+        .pipe(gulp.dest(config.build + 'src/html'));
 
 });
 
@@ -156,7 +199,7 @@ gulp.task('wiredep-test', function() {
 });
 
 // Inject only custom css
-gulp.task('inject', ['wiredep','wiredep-test','template-cache'], function() {
+gulp.task('inject', ['wiredep','wiredep-test'], function() {
     log('Wire up the app css into the html, and call wiredep ');
     return gulp
         .src(config.index)
@@ -180,6 +223,13 @@ gulp.task('watch', ['browsersync','inject'], function() {
     gulp.watch(config.alljs, ['inject','browsersync']);
 });
 
+// unit test tasks
+gulp.task('test', function (done) {
+
+    karma.start({
+        configFile: __dirname + '/karma.config.js'
+    }, done);
+});
 
 //// functions
 function log(msg) {

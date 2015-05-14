@@ -7,7 +7,7 @@ describe('architectureRestService', function () {
     beforeEach(module('app'));
 
     it('test', function () {
-        expect('test').toBe('test');
+        expect('test').toBe('test1');
     });
 
 

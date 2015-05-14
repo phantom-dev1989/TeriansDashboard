@@ -1,7 +1,11 @@
 module.exports = function() {
 
     var client = './';
+    var root = './';
     var temp = './.tmp/';
+    var report = './report/';
+    var wiredep = require('wiredep');
+    var bowerFile = wiredep({devDependencies: true})['js'];
 
     var config = {
 
@@ -26,6 +30,11 @@ module.exports = function() {
         js: [
             './src/js/**/*.js'
         ],
+        root: root,
+        packages: [
+            './package.json',
+            './bower.json'
+        ],
         /**
          * Bower and NPM locations
          */
@@ -42,7 +51,7 @@ module.exports = function() {
             options: {
                 module: 'app',
                 standAlone: false,
-                root: '/'
+                root: './'
             }
         }
 
@@ -56,6 +65,31 @@ module.exports = function() {
         };
         return options;
     };
+
+    config.getKarmaOptions = function() {
+        var options = {
+            files: [].concat(
+                bowerFile,
+                './src/js/**/*.js',
+                './src/test/spec/*.js'
+            ),
+            exclude: [],
+            coverage: {
+                dir: report + 'coverage',
+                reporters:[
+                    {type: 'html', subdir: 'report-html'},
+                    {type: 'lcov', subdir: 'report-lcov'},
+                    {type: 'text-summary'}
+                ]
+            },
+            preprocessors:{
+
+            }
+        };
+        options.preprocessors[client + '**/!(*.spec)+(.js)'] = ['coverage'];
+        return options;
+    };
+
 
     return config;
 };

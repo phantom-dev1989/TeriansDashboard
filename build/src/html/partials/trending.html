@@ -1,0 +1,110 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="active">
+                        Trending
+                    </li>
+                    <li class="active">
+                        Scanned {{scanned}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{issueCount}} text-small="Total Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{issueCriticalCount}} text-small="Critical Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{issueHighCount}} text-small="High Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{issueMediumCount}} text-small="Medium Issues"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{loc}} text-small="Lines of Code"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{techdebt}} text-small="Tech Debt"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{complexity}} text-small="Complexity"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{abstractness}} text-small="Abstractness"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{instability}} text-small="Instability"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{packageCount}} text-small="Packages"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{clazzCount}} text-small="Classes"/>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <terians-blue-thumbnail text-large={{methodCount}} text-small="Methods"/>
+            </div>
+        </div>
+        <div>
+            <div gridster="gridsterOpts">
+                <ul>
+                    <div gridster-item>
+                        <terians-panel title="Issue Severity Count By Scan">
+                            <div ng-controller="trendingSeverityAreaSplineCtrl">
+                                <terians-high-charts-basic-area-spline ng-hide="!isData" data="data"
+                                                                       title="title" xaxis="xAxis" yaxis="yAxis"
+                                                                       htooltip="tooltip"></terians-high-charts-basic-area-spline>
+                                <h1 class="text-center" ng-hide="isData">No Data</h1>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Technical Debt by Scan">
+                            <div ng-controller="trendingTechDebtLineChart">
+                                <terians-high-charts-line-chart-with-labels ng-hide="!isData" title="title"
+                                                                            subTitle="subTitle"
+                                                                            data="data"
+                                                                            xaxis="xAxis" yaxis="yAxis"
+                                                                            htooltip="tooltip"></terians-high-charts-line-chart-with-labels>
+                                <h1 class="text-center" ng-hide="isData">No Data</h1>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Trending Metrics By Scan">
+                            <div ng-controller="trendingMetricLineChart">
+                                <terians-high-charts-line-chart-basic ng-hide="!isData" title="title"
+                                                                      subTitle="subTitle"
+                                                                      data="data" xaxis="xAxis" yaxis="yAxis"
+                                                                      htooltip="tooltip"></terians-high-charts-line-chart-basic>
+                                <h1 class="text-center" ng-hide="isData">No Data</h1>
+                            </div>
+                        </terians-panel>
+                    </div>
+                    <div gridster-item>
+                        <terians-panel title="Issue Severity Percentage By Scan">
+                            <div ng-controller="trendingSeverityAreaPercentageCtrl">
+                                <terians-high-charts-basic-area-percentage ng-hide="!isData" data="data" title="title"
+                                                                           subTitle="subTitle" xaxis="xAxis"
+                                                                           yaxis="yAxis"
+                                                                           htooltip="tooltip"></terians-high-charts-basic-area-percentage>
+                                <h1 class="text-center" ng-hide="isData">No Data</h1>
+                            </div>
+                        </terians-panel>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->

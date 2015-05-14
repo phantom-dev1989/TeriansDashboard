@@ -7,4 +7,8 @@ describe('dependenciesRestService', function () {
     beforeEach(module('app'));
 
 
+    it('test', function () {
+        expect('test').toBe('test');
+    });
+
 });

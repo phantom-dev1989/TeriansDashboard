@@ -1,0 +1,31 @@
+<table st-table="displayed" class="table">
+    <thead>
+    <tr>
+        <th><input st-search placeholder="global search" class="input-sm form-control"
+                   type="search"/></th>
+    </tr>
+    <tr>
+        <th st-ratio="20" st-sort="firstName" class="table-text">first name</th>
+        <th st-ratio="20" st-sort="lastName" class="table-text">last name</th>
+        <th st-ratio="10" st-sort="age" class="table-text">age</th>
+        <th st-ratio="30" st-sort="email" class="table-text">email</th>
+        <th st-ratio="20" st-sort="balance" class="table-text">balance</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in displayed" ng-class-even="'alternate-table-row'">
+        <td st-ratio="20" class="table-text">{{row.firstName}}</td>
+        <td st-ratio="20" class="table-text">{{row.lastName | uppercase}}</td>
+        <td st-ratio="10" class="table-text">{{row.age}}</td>
+        <td st-ratio="30" class="table-text">{{row.email}}</td>
+        <td st-ratio="20" class="table-text">{{row.balance | currency}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="5" class="text-center">
+            <div st-items-by-page="20" st-pagination="" class="pagination-height"></div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
