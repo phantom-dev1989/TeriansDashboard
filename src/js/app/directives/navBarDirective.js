@@ -1,19 +1,17 @@
 (function (module) {
 
-    var teriansNavBar = function () {
+    module.directive("teriansNavBar", teriansNavBar);
+
+    function teriansNavBar() {
 
         return {
             restrict: 'E',
             replace: true,
             templateUrl: 'src/html/partials/directives/teriansNavBar.html',
-            controller: function ($scope, projectsSvc, scanSvc, projectsRestSvc, $modal, alertingSvc, $state) {
+            controller: ['$scope', 'projectsSvc', 'scanSvc', 'projectsRestSvc', '$modal', 'alertingSvc', '$state',
+                function ($scope, projectsSvc, scanSvc, projectsRestSvc, $modal, alertingSvc, $state) {
 
                 $scope.projectName = projectsSvc.getCurrentProjectName().replace(/_/g," ");
-
-                $scope.signOut = function(){
-                    // clear token data of the user
-                    $state.go('signin');
-                }
 
                 projectsRestSvc.getProjects().then(function (projects) {
                     projectsSvc.setCurrentProjects(projects);
@@ -27,7 +25,8 @@
                     var modalInstance = $modal.open({
                         templateUrl: 'src/html/partials/projectsModal.html',
                         size: 'lg',
-                        controller: function ($scope, $modalInstance, projectsDataSvc, scanDataSvc, scanRestSvc) {
+                        controller: ['$scope', '$modalInstance', 'projectsDataSvc', 'scanDataSvc', 'scanRestSvc',
+                            function ($scope, $modalInstance, projectsDataSvc, scanDataSvc, scanRestSvc) {
 
                             $scope.currentScans = [];
                             $scope.isOkDisabled = true;
@@ -41,6 +40,7 @@
                                 $modalInstance.dismiss();
                             };
 
+                                // code to show projects in modal breakout of here
                             $scope.gridOptionsProject = {
                                 enableSorting: false,
                                 enableFiltering: false,
@@ -81,6 +81,7 @@
                                 });
                             };
 
+                                // code to display scans in modal break out of here
                             $scope.gridOptionsScan = {
                                 enableSorting: false,
                                 enableFiltering: false,
@@ -119,7 +120,7 @@
                                 });
 
                             };
-                        }
+                        }]
                     });
 
                     modalInstance.result.then(function (selectedScan) {
@@ -131,9 +132,9 @@
                         alertingSvc.addInfo("Project Modal Dismissed");
                     });
                 }
-            }
+            }]
         };
     };
-    module.directive("teriansNavBar", teriansNavBar);
+
 
 }(angular.module("app")));

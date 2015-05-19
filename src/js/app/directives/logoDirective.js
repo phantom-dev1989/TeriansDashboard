@@ -3,7 +3,9 @@
  */
 (function (module) {
 
-    var teriansLogo = function () {
+    module.directive("teriansLogo", teriansLogo);
+
+    function teriansLogo() {
 
         return {
             restrict: 'E',
@@ -12,7 +14,5 @@
         };
 
     };
-
-    module.directive("teriansLogo", teriansLogo);
 
 }(angular.module("app")));

@@ -3,7 +3,9 @@
  */
 (function (module) {
 
-    var teriansBlueThumbnail = function () {
+    module.directive("teriansBlueThumbnail", teriansBlueThumbnail);
+
+    function teriansBlueThumbnail() {
 
         return {
             restrict: 'E',
@@ -13,7 +15,7 @@
                 textLarge: "@",
                 textSmall: "@"
             },
-            controller: function ($scope) {
+            controller: ['$scope', function ($scope) {
                 $scope.getTextLarge = function () {
                     return $scope.textLarge;
                 };
@@ -21,11 +23,8 @@
                 $scope.getTextSmall = function () {
                     return $scope.textSmall;
                 };
-            }
-
+            }]
         };
     };
-
-    module.directive("teriansBlueThumbnail", teriansBlueThumbnail);
 
 }(angular.module("app")));

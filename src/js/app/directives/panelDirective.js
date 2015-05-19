@@ -1,6 +1,8 @@
 (function (module) {
 
-    var teriansPanel = function () {
+    module.directive("teriansPanel", teriansPanel);
+
+    function teriansPanel() {
 
         return {
             restrict: 'E',
@@ -11,7 +13,7 @@
                 title: "@",
                 icon: "@"
             },
-            controller: function ($scope) {
+            controller:  ['$scope', function ($scope) {
                 $scope.getTitle = function () {
                     return $scope.title;
                 };
@@ -19,12 +21,8 @@
                 $scope.getIcon = function () {
                     return $scope.icon;
                 };
-            }
+            }]
 
         };
-
     };
-
-    module.directive("teriansPanel", teriansPanel);
-
 }(angular.module("app")));
