@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsTreeMap = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsTreeMap", teriansHighChartsTreeMap);
+
+    teriansHighChartsTreeMap.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsTreeMap(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -37,7 +41,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsTreeMap", teriansHighChartsTreeMap);
 
 }(angular.module("app")));

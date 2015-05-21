@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsSpiderWeb = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsSpiderWeb", teriansHighChartsSpiderWeb);
+
+    teriansHighChartsSpiderWeb.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsSpiderWeb(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -64,7 +68,5 @@
         };
 
     };
-
-    module.directive("teriansHighChartsSpiderWeb", teriansHighChartsSpiderWeb);
 
 }(angular.module("app")));

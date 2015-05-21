@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsGaugeChart = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsGaugeChart", teriansHighChartsGaugeChart);
+
+    teriansHighChartsGaugeChart.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsGaugeChart(highChartsResizeSvc) {
         return {
             restrict: 'E',
             template: '<div></div>',
@@ -71,7 +75,5 @@
         };
 
     };
-
-    module.directive("teriansHighChartsGaugeChart", teriansHighChartsGaugeChart);
 
 }(angular.module("app")));

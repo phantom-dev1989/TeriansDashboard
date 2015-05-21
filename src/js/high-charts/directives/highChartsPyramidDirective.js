@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsPyramid = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsPyramid", teriansHighChartsPyramid);
+
+    teriansHighChartsPyramid.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsPyramid(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -45,7 +49,5 @@
         };
 
     };
-
-    module.directive("teriansHighChartsPyramid", teriansHighChartsPyramid);
 
 }(angular.module("app")));

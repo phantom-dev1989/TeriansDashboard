@@ -4,7 +4,9 @@
 
 (function (module) {
 
-    var teriansJointJsUmlClassDiagram = function () {
+    module.directive("teriansJointJsUmlClassDiagram", teriansJointJsUmlClassDiagram);
+
+    function teriansJointJsUmlClassDiagram() {
 
         return {
             restrict: 'E',
@@ -36,7 +38,5 @@
         };
 
     };
-
-    module.directive("teriansJointJsUmlClassDiagram", teriansJointJsUmlClassDiagram);
 
 }(angular.module("app")));

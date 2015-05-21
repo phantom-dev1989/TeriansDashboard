@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsLineChartWithLabels = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsLineChartWithLabels", teriansHighChartsLineChartWithLabels);
+
+    teriansHighChartsLineChartWithLabels.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsLineChartWithLabels(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -49,7 +53,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsLineChartWithLabels", teriansHighChartsLineChartWithLabels);
 
 }(angular.module("app")));

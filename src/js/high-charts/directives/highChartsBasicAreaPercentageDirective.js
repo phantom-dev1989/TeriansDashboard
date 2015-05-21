@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsBasicAreaPercentage = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsBasicAreaPercentage", teriansHighChartsBasicAreaPercentage);
+
+    teriansHighChartsBasicAreaPercentage.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsBasicAreaPercentage(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -55,7 +59,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsBasicAreaPercentage", teriansHighChartsBasicAreaPercentage);
 
 }(angular.module("app")));

@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsBasicAreaSpline = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsBasicAreaSpline", teriansHighChartsBasicAreaSpline);
+
+    teriansHighChartsBasicAreaSpline.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsBasicAreaSpline(highChartsResizeSvc) {
         return {
             restrict: 'E',
             template: '<div></div>',
@@ -54,7 +58,5 @@
         };
 
     };
-
-    module.directive("teriansHighChartsBasicAreaSpline", teriansHighChartsBasicAreaSpline);
 
 }(angular.module("app")));

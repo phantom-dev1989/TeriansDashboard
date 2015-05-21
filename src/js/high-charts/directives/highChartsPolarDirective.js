@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsPolar = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsPolar", teriansHighChartsPolar);
+
+    teriansHighChartsPolar.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsPolar(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -60,7 +64,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsPolar", teriansHighChartsPolar);
 
 }(angular.module("app")));

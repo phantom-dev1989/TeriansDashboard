@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsBasicAreaStacked = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsBasicAreaStacked", teriansHighChartsBasicAreaStacked);
+
+    teriansHighChartsBasicAreaStacked.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsBasicAreaStacked(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -53,7 +57,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsBasicAreaStacked", teriansHighChartsBasicAreaStacked);
 
 }(angular.module("app")));

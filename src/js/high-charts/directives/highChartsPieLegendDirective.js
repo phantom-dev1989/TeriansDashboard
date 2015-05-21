@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsPieLegend = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsPieLegend", teriansHighChartsPieLegend);
+
+    teriansHighChartsPieLegend.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsPieLegend(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -56,7 +60,5 @@
         };
 
     };
-
-    module.directive("teriansHighChartsPieLegend", teriansHighChartsPieLegend);
 
 }(angular.module("app")));

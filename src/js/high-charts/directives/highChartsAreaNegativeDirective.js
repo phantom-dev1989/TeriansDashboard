@@ -1,6 +1,10 @@
 (function (module) {
 
-    var teriansHighChartsAreaNegative = function (highChartsResizeSvc) {
+    module.directive("teriansHighChartsAreaNegative", teriansHighChartsAreaNegative);
+
+    teriansHighChartsAreaNegative.$inject =['highChartsResizeSvc'];
+
+    function teriansHighChartsAreaNegative(highChartsResizeSvc) {
 
         return {
             restrict: 'E',
@@ -33,7 +37,5 @@
             }
         };
     };
-
-    module.directive("teriansHighChartsAreaNegative", teriansHighChartsAreaNegative);
 
 }(angular.module("app")));
